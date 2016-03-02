@@ -1,0 +1,59 @@
+{{!-- <div class='collapse navbar-collapse' id='main-nav-collapse'>
+  <ul class='nav navbar-nav'>
+    {{#link-to 'index' tagName='li' activeClass='active'}}
+      
+    {{/link-to}}
+  </ul>
+</div> --}}
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+      </button> 
+      {{#link-to 'index' class="navbar-brand"}}ENG Web{{/link-to}}
+      {{!-- <a class="navbar-brand" href="/"></a> --}}
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar">
+      <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+
+      <ul class="nav navbar-nav">
+        <!-- <li><a href="/">Home </a></li> -->
+
+        <li class="dropdown">
+          <a href="/live_shots">Live Shots</a>
+        </li>
+
+        <li class="dropdown">
+          {{#link-to 'vehicles'}}Vehicles{{/link-to}}
+        </li>
+
+        <li class="dropdown">
+          <a href="/receivers">Receivers</a>
+        </li>
+
+        <li class="dropdown"><a href="/shows">Shows</a></li>
+
+        <li class="dropdown">
+          <a>Dashboards</a>
+
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/pages/quickview">Quickview</a></li>
+
+            <li><a href="/pages/map_view">Map</a></li>
+
+            <li><a href="/pages/liveshots">LiveShots</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <div class="circular-avatar-tiny"><img src="/images/avatars/ID.jpg" alt="userpic" onerror="this.src='/images/no-avatar.png'" /></div>
+          Current User
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

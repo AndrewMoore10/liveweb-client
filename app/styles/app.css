@@ -1,0 +1,371 @@
+@import url("common.css");
+
+body
+{
+  // margin: 0 auto;
+  // width: 100%;
+  background: #fff;
+  font-family: "Hammersmith One", sans-serif;
+
+    overflow-y: scroll;
+}
+
+tr > th {
+  text-align: left;
+}
+
+.notice, .alert {
+  border-radius: 10px;
+}
+// dt { float: left }
+// dd { float: right }
+// dt { clear:both }
+
+a {
+  text-decoration: none;
+  color: #253453;
+}
+
+a:link, a:visited {
+    text-decoration: none; 
+    decoration: none; 
+}
+
+#content > h1{
+  margin-left: 60px;
+}
+
+#header
+{
+  background: #202d44;
+  padding: 0px;
+  // padding-top: 20px;
+}
+
+#header h1 { 
+  text-shadow: rgb(255, 255, 255) 1px 2px 0px, rgb(119, 119, 119) 2px 3px 0px;
+  font-family: Ultra, sans-serif;
+  margin: 0px;
+  margin-left: 30px; 
+  color: #253453;
+}
+.navbar-right > li{
+  padding-left:30px;
+  padding-right:30px;
+}
+.navbar-right > li > ul{
+  // text-align: right;
+  min-width: 300px;
+}
+
+.alert, .notice{
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  width: 65%;
+  padding: 20px;
+}
+.alert {
+  background-color: #FFB3A5;
+  color: #990000;
+  border: 2px solid #FC7F6B;
+}
+
+.notice {
+  background-color: #AAFFAA;
+  color: #004400;
+  border: 2px solid #55AA33;
+}
+
+.affix-top,.affix{
+  position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+    margin-top:30px;
+    width:100px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:100px;
+  }
+}
+// #section-navigation
+// {
+//  float: left;
+//  width: 100px;
+//  padding: 20px 0 0 20px;
+//  display: inline;
+//  position: absolute;
+//  left: 0px;
+// }
+
+#section-navigation ul
+{
+  margin: 0;
+  padding: 0;
+}
+
+#section-navigation ul li
+{
+  margin: 0 0 1em;
+  padding: 0;
+  list-style-type: none;
+}
+
+// #content-mid
+// {
+//  float: left;
+//  width: calc( 100% - 100px - 100px);
+//  max-width:  calc( 100% - 175px - 100px);
+//  padding: 20px 20px 200px 100px;
+//  margin: 0 0 0 2%;
+// }
+
+#content-mid h2 { margin: 0; }
+
+// #aside
+// {
+//  float: right;
+//  width: 100px;
+//  padding: 20px 0;
+//  margin: 0 10px 0 0;
+//  display: inline;
+// }
+
+// #aside h3 { margin: 0; }
+
+.thumbnails.image_picker_selector img {
+  width: 50px;
+  height: 50px;
+}
+
+img.desaturate { filter: grayscale(100%); }
+
+#popup {
+  display: none;
+  position: fixed;
+  width:100%;
+  height:100%;
+  left: 0px;
+  top: 0px;
+  background-color: rgba( 0, 0, 0, 0.7 );
+  z-index: 1099;
+}
+
+#popup #pop_dialog::-webkit-scrollbar { width: 0 !important }
+#popup #pop_dialog{
+  position: relative;
+  width:80%;
+  min-height: 300px;
+  max-height: calc( 80% - 35px);
+  margin: auto;
+  margin-top: 35px;
+  padding: 50px;
+  
+  overflow-y: scroll;
+  background-color: white;
+  
+  border: 2px solid black;
+  border-radius: 32px;
+  border-top-right-radius: 0px;
+}
+
+#popup #pop_dialog #pop_content{
+  overflow: hidden;
+}
+
+
+#popup #close{
+
+  position: absolute;
+  right: 4.5%;
+  top: 16px;  
+  background: URL("/images/close.png");
+  height: 32px;
+  width: 32px;
+  z-index: 99;
+}
+
+// form label{
+//  font-weight: bold;
+// }
+// form div.field{
+//  padding-bottom:20px;
+// }
+
+table .pic {
+  height:40px;
+  width: 60px;
+}
+
+.navbar .container, .navbar-header{
+  height:100%;
+
+}
+
+.navbar-inverse .navbar-brand {
+    display:block;
+    text-align:center;
+  height:100%;
+    line-height:39px;
+  font-family: "Lobster", cursive;
+  color: white;
+  font-size: 24pt;
+  letter-spacing: 1px;
+  padding: 11px 15px 9px;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));
+    text-shadow: 0 15px 12px black;
+}
+
+#header{
+  background: transparent;
+}
+
+.navbar-inverse {
+  // background-color: #202d44;
+  min-height: 60px;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), color-stop(10%, rgba(0,0,0,.8)), color-stop(90%, rgba(0,0,0,.8)), to(rgba(0,0,0,0))), URL("/images/skyline.jpg") ;
+  -ms-background-position-x: center;
+  -ms-background-position-y: 40%;
+  background-position: center 40%;
+}
+
+#main
+{
+  float: left;
+  width: 100%;
+  min-height: calc(100vh - 80px - 60px);
+  background: #fff;
+  padding-bottom: 0;
+}
+
+#content
+{
+  float: left;
+  width: 100%;
+  background: #fff /*url(/wp-content/uploads/layout-three-liquid-background2.gif) repeat-y 80% 0*/;
+}
+
+
+#footer
+{
+  color: white;
+  background-color: #202d44;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), color-stop(10%, rgba(0,0,0,.1)), color-stop(90%, rgba(0,0,0,.8)), to(rgba(0,0,0,0))), URL("/images/skyline.jpg") ;
+  -ms-background-position-x: center;
+  -ms-background-position-y: 70%;
+  background-position: center 70%;
+    // position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  clear: both;
+  text-align: right;
+  height: 60px;
+  vertical-align: top;
+  z-index: 99;
+}
+
+#footer p
+{
+  margin:0px;
+  padding: 20px;
+}
+
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+.panel-heading a.collapsed:after {
+    content:"\e080";
+}
+
+.remove {
+  color: red;
+}
+
+.table-vcenter td{
+
+    vertical-align: middle !important;
+ }
+
+ th.filtered .options{
+  display: none;
+    position:absolute;
+    // left:0;
+    width:200px;
+    max-height: 450px;
+    overflow-y: auto;
+
+  padding: 5px 5px;
+  margin: 2px 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+ }
+
+ th.filtered:hover .options{
+  display: block;
+    margin-top: 0;
+ }
+
+ #params {
+  display:none; 
+  position:absolute; 
+  width: 80%; 
+  height: 80%; 
+  background: #ddd; 
+  left: 10%; 
+  top: 20%;
+  z-index: 99999;
+ }
+
+  #console-stream-outer {
+  display:none; 
+  position:absolute; 
+  width: 80%; 
+  height: 60%; 
+  left: 10%; 
+  top: 20%;
+  z-index: 99999;
+
+  font-size: 24pt;
+  color: white;
+  background-color: rgba(3, 17, 32, 0.89); 
+  border: 10px solid rgb(3, 17, 32);
+  border-radius: 30px;
+  overflow:hidden;
+ }
+
+  #console-stream-inner {
+    padding: 30px;
+  position: relative; 
+  width: calc(100% + 15px); 
+  height: 100%; 
+  overflow-y:scroll;
+ }
+
+ #aside .progress{
+  display: none
+ }
+
+ // .col-md-8, .col-md-4 {
+ //   border: 2px solid black
+ // }
