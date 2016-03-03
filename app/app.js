@@ -8,6 +8,10 @@ let App;
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 App = Ember.Application.extend({
+
+  'ember-bootstrap': {
+      'importBootstrapTheme': true
+  },
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver

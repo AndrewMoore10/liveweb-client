@@ -22,7 +22,7 @@
         <!-- <li><a href="/">Home </a></li> -->
 
         <li class="dropdown">
-          <a href="/live_shots">Live Shots</a>
+          {{#link-to 'live-shots'}}Live Shots{{/link-to}}
         </li>
 
         <li class="dropdown">
@@ -30,10 +30,12 @@
         </li>
 
         <li class="dropdown">
-          <a href="/receivers">Receivers</a>
+          {{#link-to 'receivers'}}Receivers{{/link-to}}
         </li>
 
-        <li class="dropdown"><a href="/shows">Shows</a></li>
+        <li class="dropdown">
+          {{#link-to 'shows'}}Shows{{/link-to}}
+        </li>
 
         <li class="dropdown">
           <a>Dashboards</a>

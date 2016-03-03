@@ -1,0 +1,6 @@
+<h2>List of vehicles</h2>
+<ul>
+  {{#each model key="id" as |receiver|}}
+    <li>{{#link-to "receiver" receiver.id}} {{receiver.name}} {{/link-to}}</li>
+  {{/each}}
+</ul>

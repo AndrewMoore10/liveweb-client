@@ -1,7 +1,10 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
+import Transmitter from './transmitter';
+
+export default Transmitter.extend({
   name: DS.attr(),
+  status: DS.attr(),
   description: DS.attr(),
   active: DS.attr(),
   vehicle_type: DS.attr(),
@@ -23,9 +26,14 @@ export default DS.Model.extend({
   mojio_id: DS.attr(),
   created_at: DS.attr(),
   updated_at: DS.attr(),
+  transmitterType: Ember.computed( function(){
+    return "vehicle";
+  }),
+  transmitterTypeHuman: Ember.computed( function(){
+    return "Vehicle";
+  })
   // logs: DS.hasMany("vehicle-log"),
   // equipment: DS.hasMany("equipment"),
-  // live_shots: DS.hasMany("live-shot"),
   // assigned_to: DS.belongsTo("user"),
 
 });
