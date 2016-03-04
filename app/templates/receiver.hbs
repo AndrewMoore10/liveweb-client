@@ -1,0 +1,24 @@
+
+
+<div id="content-mid" class="col-md-8">
+<div class="vehicle_img"><div class="image-frame"></div></div>
+ {{#bs-accordion selected="1"}}
+     {{#bs-accordion-item value="1" title="Details"}}
+      <dl class="dl-horizontal">
+        <dt>Name:</dt> <dd>{{editable-field model=model field=model.name type=text}}</dd>
+        <dt>Location:</dt> <dd>{{editable-field model=model field=model.location}}</dd>
+        <dt>Status:</dt> <dd>{{editable-field model=model field=model.status}}</dd>
+        <dt>Status:</dt> <dd>{{editable-field model=model field=model.status alt-label=model.status_name type="select" option_data=model.status_options}}</dd>
+        <dt>Status Note:</dt> <dd>{{editable-field model=model field=model.status_note type="textarea"}}</dd>
+        <dt>Receiver Type:</dt> <dd>{{editable-field model=model field=model.receiver_type alt-label=model.type_name type="select" option_data=model.type_options}}</dd>
+      </dl>
+     {{/bs-accordion-item}}
+     {{#bs-accordion-item value="4" title="LiveShots"}}
+     <ul>
+      {{#each model.live_shots key="id" as |live-shot|}}
+        <li>{{#link-to "live-shot" live-shot.id}} {{live-shot.title}} {{/link-to}}</li>
+      {{/each}}
+    </ul>
+     {{/bs-accordion-item}}
+ {{/bs-accordion}}
+</div>

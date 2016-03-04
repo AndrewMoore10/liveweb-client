@@ -1,5 +1,20 @@
+<div>
 {{#if isEditing }}
-  {{input value=field}}
+  {{#if isTextArea }}
+    {{textarea value=field}}
+  {{else if isSelect }}
+    {{view "select"
+       content=option_data
+       optionValuePath="content.value"
+       optionLabelPath="content.label"
+       value=field}}
+  {{else}}
+    {{input type=type value=field}}
+  {{/if}}
+{{else if hasAltLabel}}
+  {{alt-label}} --Edit
 {{else}}
-  {{field}}
+
+  {{field}} --Edit
 {{/if}}
+</div>

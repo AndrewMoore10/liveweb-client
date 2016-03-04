@@ -8,6 +8,8 @@ export default Transmitter.extend({
   description: DS.attr(),
   active: DS.attr(),
   vehicle_type: DS.attr(),
+  v_type_name: DS.attr(),
+  v_type_options: DS.attr(),
   vin: DS.attr(),
   license: DS.attr(),
   year: DS.attr(),

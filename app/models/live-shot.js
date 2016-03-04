@@ -23,5 +23,4 @@ export default DS.Model.extend({
   created_at: DS.attr(),
   updated_at: DS.attr(),
   // modified_by: DS.belongsTo("user")
-
 });
