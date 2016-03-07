@@ -20,14 +20,13 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'default-src': "'none'",
       'media-src': "'self' *",
-    'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
-    'font-src': "'self' fonts.gstatic.com",
-    'connect-src': "'self' maps.gstatic.com 10.40.10.45:3000 localhost:3000",
-    'img-src': "'self' * *.googleapis.com maps.gstatic.com csi.gstatic.com",
-    'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
+      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "'self' maps.gstatic.com 10.40.10.45:3000 localhost:3000",
+      'img-src': "'self' * *.googleapis.com maps.gstatic.com csi.gstatic.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
     }
   };
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

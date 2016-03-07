@@ -8,13 +8,16 @@
        optionValuePath="content.value"
        optionLabelPath="content.label"
        value=field}}
+  {{else if isCheckbox }}
+    {{input type=type checked=field}} {{field}}
   {{else}}
     {{input type=type value=field}}
   {{/if}}
 {{else if hasAltLabel}}
   {{alt-label}} --Edit
+{{else if hasBlock}}
+  {{yield}} --Edit
 {{else}}
-
   {{field}} --Edit
 {{/if}}
 </div>

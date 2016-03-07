@@ -29,7 +29,15 @@ export default Ember.Component.extend({
     return this.get('type') == "select";
   }.property('type'),
 
+  isCheckbox: function() {
+    return this.get('type') == "checkbox";
+  }.property('type'),
+
   hasAltLabel: function() {
     return this.get('alt-label');
-  }.property('alt-label')
+  }.property('alt-label'),
+
+  hasContent: function() {
+    return this.get('content');
+  }.property('content')
 });
