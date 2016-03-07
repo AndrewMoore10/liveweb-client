@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(params) {
-    params.include = "transmitter"
-    Ember.Logger.log(params)
+    // params.include = "transmitter";
+    // Ember.Logger.log(params)
     var record = this.store.findRecord('live-shot', params.id);
-    Ember.Logger.log(record)
+    // Ember.Logger.log(record)
     return record;
   },
 
