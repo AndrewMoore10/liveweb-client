@@ -53,7 +53,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           {{#if session.isAuthenticated}}
-            {{session.currentUser}}<a {{action 'invalidateSession'}}>Logout</a>
+            <a {{action 'invalidateSession'}}>{{session.currentUser}}</a>
           {{else}}
             {{#link-to 'login'}}Login{{/link-to}}
           {{/if}}

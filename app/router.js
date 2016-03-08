@@ -26,6 +26,10 @@ Router.map(function() {
   this.route('shows', function() {
   });
   this.route('show', { path: '/show/:id' });
+
+  this.route('users', function() {
+  });
+  this.route('user', { path: '/user/:id' });
 });
 
 export default Router;
