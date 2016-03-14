@@ -9,17 +9,12 @@ export default Ember.Service.extend({
   loadCurrentUser() {
     return new RSVP.Promise((resolve, reject) => {
       const session = this.get('session');
-      Ember.Logger.log(session.get('data.authenticated.user.fn'));
       const user = this.get('session.data.authenticated.user');
-      // console.log(accountId);
       if (!Ember.isEmpty(user)) {
-        
-        session.set('currentUser', user.fn + " " + user.ln);
-        resolve();
-        // return this.get('store').find('user', user.id).then((account) => {
-        //   this.set('currentUser', account);
-        //   resolve();
-        // }, reject);
+        return this.get('store').find('user', user.id).then((user) => {
+          session.set('currentUser', user.get('name'));
+          resolve();
+        }, reject);
       } else {
         resolve();
       }

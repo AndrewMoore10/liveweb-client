@@ -1,0 +1,23 @@
+
+
+<div id="content-mid" class="col-md-8">
+<div class="vehicle_img"><div class="image-frame"></div></div>
+ {{#bs-accordion selected="1"}}
+     {{#bs-accordion-item value="1" title="Details"}}
+      <dl class="dl-horizontal">
+        <dt>Name:</dt> <dd>{{model.name}}</dd>
+        <dt>Email:</dt> <dd>{{model.email}}</dd>
+        <dt>Username:</dt> <dd>{{model.username}}</dd>
+        <dt>ID:</dt> <dd>{{model.id}}</dd>
+        <dt>Picture:</dt> <dd>{{model.picture}}</dd>
+      </dl>
+     {{/bs-accordion-item}}
+     {{#bs-accordion-item value="4" title="LiveShots"}}
+     <ul>
+      {{#each model.live_shots key="id" as |live-shot|}}
+        <li>{{#link-to "live-shot" live-shot.id}} {{live-shot.title}} {{/link-to}}</li>
+      {{/each}}
+    </ul>
+     {{/bs-accordion-item}}
+ {{/bs-accordion}}
+</div>

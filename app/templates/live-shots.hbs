@@ -1,6 +1,12 @@
-<h2>List of vehicles</h2>
+<h2>Live Shots</h2>
+<div class="col-md-3">
 <ul>
   {{#each model key="id" as |live-shot|}}
-    <li>{{#link-to "live-shot" live-shot.id}} {{live-shot.title}} {{/link-to}}</li>
+    <li>{{#link-to "live-shots.live-shot" live-shot }} {{live-shot.title}} {{/link-to}}</li>
   {{/each}}
 </ul>
+</div>
+<div class="col-md-9">
+  {{!-- LiveShot --}}
+  {{outlet}}
+</div>

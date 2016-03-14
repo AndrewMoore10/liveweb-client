@@ -4,10 +4,10 @@
     {{textarea value=field}}
   {{else if isSelect }}
     {{view "select"
-       content=option_data
-       optionValuePath="content.value"
-       optionLabelPath="content.label"
-       value=field}}
+       content=content
+       optionValuePath=optionValuePath
+       optionLabelPath=optionLabelPath
+       selection=field}}
   {{else if isCheckbox }}
     {{input type=type checked=field}} {{field}}
   {{else}}
