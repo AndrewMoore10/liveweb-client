@@ -1,15 +1,19 @@
-<select id='{{fieldname}}-type' onchange={{action "selectType" value="target.value"}}>
+{{!-- <select id='{{fieldname}}-type' onchange={{action "selectType" value="target.value"}}>
   {{#each typeContent as |polyType| }}
     <option value={{polyType.type}} selected={{eq field.transmitterType polyType.type}}>{{polyType.type}}</option>
   {{/each}}
 </select>
 <select id='{{fieldname}}-id' onchange={{action "selectId" value="target.value"}}>
+  <option value=0 >Select a {{fieldname}}</option>
   {{#each contentOfType as |polyID| }}
     <option value={{polyID.id}} selected={{eq field.id polyID.id}}>{{polyID.name}}</option>
+  {{/each}}
+</select> --}}
+
+<select id='{{fieldname}}-type' onchange={{action "selectPoly" value="target.value"}}>
+  {{#each mergedContent as |item| }}
+    <option value={{item.value}} selected={{eq currentMergedId item.value}}>{{item.label}}</option>
   {{/each}}
 </select>
 
 <button {{action 'save'}}>Save</button>
-
-<br/>
-Type from controller:       {{field.transmitterType}}
