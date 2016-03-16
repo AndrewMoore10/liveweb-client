@@ -10,12 +10,12 @@ export default Ember.Route.extend({
   },
   afterModel: function() {
     return Ember.RSVP.hash({
-      vehicles: this.store.find('vehicle').then((function(_this) {
+      vehicles: this.store.findAll('vehicle').then((function(_this) {
         return function(vehicles) {
           return _this.set('vehicles', vehicles);
         };
       })(this)),
-      mobileTransmitters: this.store.find('mobile-transmitter').then((function(_this) {
+      mobileTransmitters: this.store.findAll('mobile-transmitter').then((function(_this) {
         return function(mobileTransmitters) {
           return _this.set('mobileTransmitters', mobileTransmitters);
         };

@@ -3,11 +3,11 @@
   {{#if isTextArea }}
     {{textarea value=field}}
   {{else if isSelect }}
- {{!--    {{view "select"
-       content=content
-       optionValuePath=optionValuePath
-       optionLabelPath=optionLabelPath
-       selection=field}} --}}
+    {{#x-select value=field }}
+      {{#each content as |item| }}
+        {{#x-option value=item.value}}{{item.label}}{{/x-option}}
+      {{/each}}
+    {{/x-select}}
   {{else if isCheckbox }}
     {{input type=type checked=field}} {{field}}
   {{else}}
