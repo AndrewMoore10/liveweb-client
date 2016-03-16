@@ -9,7 +9,7 @@ export default Ember.Component.extend({
     //   Ember.Logger.log(content[i].type);
     //   this.get('store').findAll(content[i].type);
     // }
-    // this.send('fillMergedContent');
+    this.send('fillMergedContent');
   },
   store: Ember.inject.service(),
   typeContent: null, // array of type objects
