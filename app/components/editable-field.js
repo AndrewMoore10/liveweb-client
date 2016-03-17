@@ -17,9 +17,8 @@ export default Ember.Component.extend({
   focusOut: function() {
     this.set('isEditing', false);
     var model = this.get('model');
-    if(model.get("hasDirtyAttributes")){
+    if(model.get("hasDirtyAttributes"))
       model.save();
-    }
   },
 
   isTextArea: function() {
