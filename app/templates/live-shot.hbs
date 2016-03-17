@@ -1,8 +1,0 @@
-Title: {{model.title}}<br/>
-{{model.transmitter.transmitterTypeHuman}}: {{#link-to model.transmitter.transmitterType model.transmitter.id}} {{model.transmitter.name}} {{/link-to}}<br/>
-Receiver: {{#link-to "receiver" model.receiver.id}} {{model.receiver.name}} {{/link-to}}<br/>
-Shows:<ul>
-  {{#each model.shows key="id" as |show|}}
-    <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
-  {{/each}}
-</ul>

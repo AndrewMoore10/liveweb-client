@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Resolver from 'ember/resolver';
-import loadInitializers from 'ember/load-initializers';
+import Resolver from './resolver';
+import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 
 let App;
@@ -8,10 +8,6 @@ let App;
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 App = Ember.Application.extend({
-
-  'ember-bootstrap': {
-      'importBootstrapTheme': true
-  },
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver

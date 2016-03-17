@@ -1,0 +1,37 @@
+
+
+<div id="content-mid" class="col-md-8">
+<div class="vehicle_img"><div class="image-frame"></div></div>
+ {{#bs-accordion selected="1"}}
+     {{#bs-accordion-item value="1" title="Details"}}
+      <dl class="dl-horizontal">
+        <dt>Name:</dt> <dd>{{editable-field model=model field=model.name}}</dd>
+        <dt>Status:</dt> <dd class="editable">{{model.status}}</dd>
+        <dt>Type:</dt> <dd>{{#editable-field model=model field=model.vehicle_type type="select" content=model.v_type_options optionValuePath="content.value" optionLabelPath="content.label"}}{{model.v_type_name}}{{/editable-field}}</dd>
+        <dt>Active:</dt> <dd>{{#editable-field model=model field=model.active type="checkbox"}}{{boolean-status-red-green field=model.active}}{{/editable-field}}</dd>
+        <dt>Description:</dt> <dd>{{editable-field model=model field=model.description}}</dd>
+        <dt>GPS:</dt> <dd>{{model.gps_lat}}, {{model.gps_lon}} @ {{model.gps_updated_at}}</dd>
+        <dt>VIN:</dt> <dd>{{editable-field model=model field=model.vin}}</dd>
+        <dt>License:</dt> <dd>{{editable-field model=model field=model.license}}</dd>
+        <dt>Mast Height:</dt> <dd>{{editable-field model=model field=model.mast_height}}</dd>
+        <dt>Engine service in</dt><dd>{{editable-field model=model field=model.engine_hrs_due}}</dd>
+        <dt>Last Service at </dt><dd> </dd>
+        <dt>Avg Mi/Day (30 days):</dt> <dd></dd>
+        <dt>Avg Mi/Month (1 year):</dt> <dd></dd>
+      </dl>
+     {{/bs-accordion-item}}
+     {{#bs-accordion-item value="2" title="Logs"}}
+       <p>Lorem ipsum...</p>
+     {{/bs-accordion-item}}
+     {{#bs-accordion-item value="3" title="Charts"}}
+       <p>Lorem ipsum...</p>
+     {{/bs-accordion-item}}
+     {{#bs-accordion-item value="4" title="LiveShots"}}
+     <ul>
+      {{#each model.live_shots key="id" as |live-shot|}}
+        <li>{{#link-to "live-shot" live-shot.id}} {{live-shot.title}} {{/link-to}}</li>
+      {{/each}}
+    </ul>
+     {{/bs-accordion-item}}
+ {{/bs-accordion}}
+</div>

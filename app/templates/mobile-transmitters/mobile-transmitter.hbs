@@ -7,8 +7,8 @@
       <dl class="dl-horizontal">
         <dt>Name:</dt> <dd>{{editable-field model=model field=model.name}}</dd>
         <dt>Status:</dt> <dd class="editable">{{model.status}}</dd>
-        <dt>Type:</dt> <dd>{{editable-field model=model field=model.vehicle_type alt-label=model.v_type_name type="select" option_data=model.v_type_options}}</dd>
-        <dt>Active:</dt> <dd>{{model.active}}</dd>
+        <dt>Type:</dt> <dd>{{#editable-field model=model field=model.vehicle_type type="select" content=model.v_type_options optionValuePath="content.value" optionLabelPath="content.label"}}{{model.v_type_name}}{{/editable-field}}</dd>
+        <dt>Active:</dt> <dd>{{#editable-field model=model field=model.active type="checkbox"}}{{boolean-status-red-green field=model.active}}{{/editable-field}}</dd>
         <dt>Description:</dt> <dd>{{editable-field model=model field=model.description}}</dd>
         <dt>GPS:</dt> <dd>{{model.gps_lat}}, {{model.gps_lon}} @ {{model.gps_updated_at}}</dd>
         <dt>VIN:</dt> <dd>{{editable-field model=model field=model.vin}}</dd>

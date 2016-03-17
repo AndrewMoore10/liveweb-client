@@ -52,8 +52,13 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <div class="circular-avatar-tiny"><img src="/images/avatars/ID.jpg" alt="userpic" onerror="this.src='/images/no-avatar.png'" /></div>
-          Current User
+          {{#if session.isAuthenticated}}
+            <a {{action 'invalidateSession'}}>{{session.currentUser}}</a>
+          {{else}}
+            {{#link-to 'login'}}Login{{/link-to}}
+          {{/if}}
+          {{!-- <div class="circular-avatar-tiny"><img src="/images/avatars/ID.jpg" alt="userpic" onerror="this.src='/images/no-avatar.png'" /></div>
+          Current User --}}
         </li>
       </ul>
     </div>

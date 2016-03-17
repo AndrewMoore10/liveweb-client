@@ -1,0 +1,10 @@
+Title: {{editable-field model=model field=model.title}}<br/>
+TX: {{polymorphic-select model=model fieldname="transmitter" typeContent=transmitterTypes field=model.transmitter}}<br/>
+{{model.transmitter.transmitterTypeHuman}}: {{#editable-field model=model field=model.transmitter type="select" content=transmitters optionValuePath="content.id" optionLabelPath="content.name"}}{{model.transmitter.name}}{{/editable-field}}<br/>
+{{!-- {{model.transmitter.transmitterTypeHuman}}: {{#editable-field model=model field=model.transmitter type="select" content=transmitters optionValuePath="content.id" optionLabelPath="content.name"}}{{model.transmitter.name}}{{/editable-field}}<br/> --}}
+Receiver: {{#link-to "receiver" model.receiver.id}} {{model.receiver.name}} {{/link-to}}<br/>
+Shows:<ul>
+  {{#each model.shows key="id" as |show|}}
+    <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
+  {{/each}}
+</ul>
