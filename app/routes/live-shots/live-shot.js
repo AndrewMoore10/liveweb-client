@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   model(params) {
     params.include = "transmitter"
     Ember.Logger.log(params)
-    var record = this.store.findRecord('live-shot', params.id);
+    var record = this.store.queryRecord('live-shot', { id: params.id, include: "transmitter,receiver,shows,reporter,photogs" });
     Ember.Logger.log(record)
     return record;
   },

@@ -1,9 +1,32 @@
-Title: {{editable-field model=model field=model.title}}<br/>
-Transmitter: {{#editable-field type="poly-select" model=model field=model.transmitter fieldname="transmitter" content=transmitterTypes}}{{model.transmitter.name}}{{/editable-field}}<br/>
-{{!-- Transmitter: {{polymorphic-select model=model fieldname="transmitter" typeContent=transmitterTypes field=model.transmitter}}<br/> --}}
-Receiver:{{#editable-field type="select" model=model field=model.receiver relationship="receiver" content=receivers optionValuePath="content.id" optionLabelPath="content.name"}}{{#link-to "receiver" model.receiver.id}} {{model.receiver.name}} {{/link-to}}{{/editable-field}}
-Shows:<ul>
-  {{#each model.shows key="id" as |show|}}
-    <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
-  {{/each}}
-</ul>
+<div class='col-sm-12 well'><h1>{{editable-field model=model field=model.title}}</h1></div>
+<div class='col-sm-6 well'>Transmitter: {{#editable-field type="poly-select" model=model field=model.transmitter fieldname="transmitter" content=transmitterTypes}}{{model.transmitter.name}}{{/editable-field}}</div>
+<div class='col-sm-6 well'>Receiver:{{#editable-field type="select" model=model field=model.receiver relationship="receiver" content=receivers optionValuePath="content.id" optionLabelPath="content.name"}}{{#link-to "receiver" model.receiver.id}} {{model.receiver.name}} {{/link-to}}{{/editable-field}}</div>
+<div class='col-sm-6 well'>
+  Reporter: {{#editable-field type='power-select' model=model field=model.reporter fieldname='reporter' className='user' searchField='name'}} 
+{{#link-to "user" model.reporter.id}}{{id-card user=model.reporter}}{{/link-to}}
+
+{{/editable-field}}
+Photogs: 
+  {{#editable-field type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}} 
+    <ul>
+      {{#each model.photogs key="id" as |photog|}}
+        <li>{{#link-to "user" photog.id}}{{id-card user=photog}}{{/link-to}}</li>
+      {{/each}}
+    </ul>
+  {{/editable-field}}
+</div>
+<div class='col-sm-6 well'>Location: {{editable-field model=model field=model.location}}</div>
+<div class='col-sm-6 well'>Instruction: {{editable-field type="textarea" model=model field=model.instruction}}</div>
+<div class='col-sm-6 well'>
+  Shows:
+  {{#editable-field type='power-select-multiple' model=model field=model.shows fieldname='shows' className='show' searchField='name'}} 
+    <ul>
+      {{#each model.shows key="id" as |show|}}
+        <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
+      {{/each}}
+    </ul>
+  {{/editable-field}}
+</div>
+<div class='col-sm-6 well'>Icon: {{editable-field model=model field=model.title}}</div>
+<div class='col-sm-6 well'>Modified By: {{#link-to "user" model.modified_by.id}} {{model.modified_by.name}} {{/link-to}}</div>
+<div class='col-sm-6 well'>Created By: {{#link-to "user" model.created_by.id}} {{model.created_by.name}} {{/link-to}}</div>

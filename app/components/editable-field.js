@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   session: Ember.inject.service(),
   store: Ember.inject.service(),
+  currentUser: Ember.computed.alias('session.data.authenticated.user'),
   doubleClick: function() {
     console.log("double click");
     this.set('isEditing', true);
@@ -17,13 +18,47 @@ export default Ember.Component.extend({
     this.$('input,textarea').val(val);
   },
   focusOut: function() {
-    Ember.Logger.log("focus out");
-    this.set('isEditing', false);
-    var model = this.get('model');
-    model.save(); //has dirty does not detect dirty relationship
-    if(model.get("hasDirtyAttributes")){}
-    else Ember.Logger.log("no dirty");
+    // Ember.Logger.log("focus out");
+    // this.set('isEditing', false);
+    // var model = this.get('model');
+    // model.save(); //has dirty does not detect dirty relationship
+    // if(model.get("hasDirtyAttributes")){}
+    // else Ember.Logger.log("no dirty");
   },
+  isTextArea: function() {
+    return this.get('type') == "textarea";
+  }.property('type'),
+
+  isSelect: function() {
+    return this.get('type') == "select";
+  }.property('type'),
+
+  isPolySelect: function() {
+    return this.get('type') == "poly-select";
+  }.property('type'),
+
+  isPowerSelect: function() {
+    return this.get('type') == "power-select";
+  }.property('type'),
+
+  isPowerSelectMultiple: function() {
+    return this.get('type') == "power-select-multiple";
+  }.property('type'),
+
+  isCheckbox: function() {
+    return this.get('type') == "checkbox";
+  }.property('type'),
+
+  hasAltLabel: function() {
+    return this.get('alt-label');
+  }.property('alt-label'),
+
+  hasContent: function() {
+    return this.get('content');
+  }.property('content'),
+
+
+  //For Select
   optionValuePath: "content.value",
   optionLabelPath: "content.label",
   _valuePath: Ember.computed('optionValuePath', function () {
@@ -42,7 +77,6 @@ export default Ember.Component.extend({
     Ember.Logger.log(content);
     if (valuePath && labelPath) {
       return content.map(function (element){
-        // Ember.Logger.log(element[valuePath]);
         if( typeof element.get == 'function' ) return { value: element.get(valuePath), label: element.get(labelPath) };
         else return { value: element[valuePath], label: element[labelPath] };
       });
@@ -61,9 +95,18 @@ export default Ember.Component.extend({
     }
   }),
   actions:{
+    save(){
+      this.set('isEditing', false);
+      var store = this.get('store');
+      var model = this.get('model');
+      var currentUser = this.get('currentUser')
+      model.set('modified_by', store.peekRecord('user', currentUser.id));
+      model.save(); //has dirty does not detect dirty relationship
+      if(model.get("hasDirtyAttributes")){}
+      else Ember.Logger.log("no dirty");
+    },
     selectChanged(value){
       var model = this.get('model');
-      var field = this.get('field');
       var relationship = this.get('relationship');
       if(! Ember.isEmpty( relationship ) ){
         var selectedRelated = this.get('store').peekRecord(relationship, value )
@@ -71,35 +114,34 @@ export default Ember.Component.extend({
       }
       else{
         this.set('field', value);
-        Ember.Logger.log(field);
-        Ember.Logger.log(value.toString());
-        // model.set(field, value.toString());
       }
+    },
+    searchAction(term){
+      return new Ember.RSVP.Promise((resolve, reject) => {
+        Ember.run.debounce(this, this._performSearch, term, resolve, reject, 600);
+      });
+    },
+    onchangeAction(value){
+      var model = this.get('model');
+      var fieldname = this.get('fieldname');
+      model.set(fieldname, value);
+      model.save();
+      Ember.Logger.log(`${fieldname} changed; value: ${value}`)
+
     }
-
   },
-
-  isTextArea: function() {
-    return this.get('type') == "textarea";
-  }.property('type'),
-
-  isSelect: function() {
-    return this.get('type') == "select";
-  }.property('type'),
-
-  isPolySelect: function() {
-    return this.get('type') == "poly-select";
-  }.property('type'),
-
-  isCheckbox: function() {
-    return this.get('type') == "checkbox";
-  }.property('type'),
-
-  hasAltLabel: function() {
-    return this.get('alt-label');
-  }.property('alt-label'),
-
-  hasContent: function() {
-    return this.get('content');
-  }.property('content')
+  _performSearch(term, resolve, reject) {
+    if (Ember.isBlank(term)) { return resolve([]); }
+    var store = this.get('store');
+    var fieldname = this.get('fieldname');
+    var searchField = this.get('searchField');
+    var filter = {};
+    var _className = this.get('className');
+    filter[searchField] = term
+    
+    return resolve(this.get('field').then(function (field){
+      var className = _className || field.constructor.modelName;
+      return store.query(className, {filter} )
+    }))
+  },
 });

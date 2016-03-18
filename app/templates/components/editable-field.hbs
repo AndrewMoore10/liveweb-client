@@ -1,4 +1,3 @@
-<div>
 {{#if isEditing }}
   {{#if isTextArea }}
     {{textarea value=field}}
@@ -10,16 +9,34 @@
     </select>
   {{else if isPolySelect }}
     {{polymorphic-select model=model typeContent=content field=field fieldname=fieldname}}
+  {{else if isPowerSelect }}
+    {{#power-select
+      search=(action 'searchAction')
+      selected=field
+      onchange=(action 'onchangeAction')
+      as |type|
+    }}
+      {{type.name}}
+    {{/power-select}}
+  {{else if isPowerSelectMultiple }}
+    {{#power-select-multiple
+      search=(action 'searchAction')
+      selected=field
+      onchange=(action 'onchangeAction')
+      as |type|
+    }}
+      {{type.name}}
+    {{/power-select-multiple}}
   {{else if isCheckbox }}
     {{input type=type checked=field}} {{field}}
   {{else}}
     {{input type=type value=field}}
   {{/if}}
+  <button {{action "save"}}>Save</button>
 {{else if hasAltLabel}}
-  {{alt-label}} --Edit
+  {{alt-label}} ALT LABEL NEEDED????
 {{else if hasBlock}}
-  {{yield}} --Edit
+  {{yield}} <i class="pull-right fa fa-pencil-square-o"></i>
 {{else}}
-  {{field}} --Edit
+  {{field}} <i class="pull-right fa fa-pencil-square-o"></i>
 {{/if}}
-</div>

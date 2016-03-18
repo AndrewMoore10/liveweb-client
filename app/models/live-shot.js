@@ -10,10 +10,8 @@ export default DS.Model.extend({
   fed: DS.attr(),
   receiver: DS.belongsTo("receiver", { async: true}),
   transmitter: DS.belongsTo("transmitter", { polymorphic: true, async: true}),
-  // transmitter_id: DS.attr(),
-  // transmitter_type: DS.attr(),
-  // reporter: DS.belongsTo("user"),
-  // photogs: DS.hasMany("user"),
+  reporter: DS.belongsTo("user", {inverse: 'reporter_live_shots',  async: true}),
+  photogs: DS.hasMany("user", {inverse: 'live_shots',  async: true}),
   shows: DS.hasMany("show", { async: true}),
   lat: DS.attr(),
   lon: DS.attr(),
@@ -22,5 +20,6 @@ export default DS.Model.extend({
   issues: DS.attr(),
   created_at: DS.attr(),
   updated_at: DS.attr(),
-  // modified_by: DS.belongsTo("user")
+  modified_by: DS.belongsTo("user", {inverse: 'modified_live_shots', async: true}),
+  created_by: DS.belongsTo("user", {inverse: 'created_live_shots', async: true})
 });

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  store: Ember.inject.service(),
   init: function() {
     this._super();
   },
@@ -19,4 +20,28 @@ export default Ember.Controller.extend({
       }
     ]
   }),
+  actions:{
+    searchReporters(term) {
+      if (Ember.isBlank(term)) { return []; }
+      var store = this.get('store');
+      return store.query('user', {filter: { name: term } } )
+    },
+    reporterSearchChanged(value){
+      var model = this.get('model');
+      model.set("reporter", value);
+      model.save();
+      Ember.Logger.log(`reporter changed; value: ${value}`)
+    },
+    searchPhotogs(term) {
+      if (Ember.isBlank(term)) { return []; }
+      var store = this.get('store');
+      return store.query('user', {filter: { name: term } } )
+    },
+    photogSearchChanged(value){
+      var model = this.get('model');
+      model.set("photogs", value);
+      model.save();
+      Ember.Logger.log(`reporter changed; value: ${value}`)
+    }
+  }
 });
