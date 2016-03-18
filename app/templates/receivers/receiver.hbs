@@ -9,7 +9,7 @@
         <dt>Location:</dt> <dd>{{editable-field model=model field=model.location}}</dd>
         <dt>Status:</dt> <dd>{{#editable-field model=model field=model.status type="select" content=model.status_options}}{{model.status_name}}{{/editable-field}}</dd>
         <dt>Status Note:</dt> <dd>{{editable-field model=model field=model.status_note type="textarea"}}</dd>
-        <dt>Receiver Type:</dt> <dd>{{#editable-field model=model field=model.receiver_type type="select" option_data=model.type_options}}{{model.type_name}}{{/editable-field}}</dd>
+        <dt>Receiver Type:</dt> <dd>{{#editable-field type="select" model=model field=model.receiver_type content=model.type_options}}{{model.type_name}}{{/editable-field}}</dd>
       </dl>
      {{/bs-accordion-item}}
      {{#bs-accordion-item value="4" title="LiveShots"}}
