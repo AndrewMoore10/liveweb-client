@@ -4,6 +4,9 @@ export default Ember.Controller.extend({
   init: function() {
     this._super();
   },
+  receivers: Ember.computed(function(){
+    return this.get("store").peekAll('receiver');
+  }),
   transmitterTypes: Ember.computed(function(){
     return [
       { index: 0,
@@ -12,7 +15,7 @@ export default Ember.Controller.extend({
       },
       { index: 1,
         type: "mobile-transmitter",
-        store: this.store.findAll('mobileTransmitter')
+        store: this.get('mobileTransmitters')
       }
     ]
   }),

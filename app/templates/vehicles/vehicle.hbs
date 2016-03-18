@@ -29,7 +29,7 @@
      {{#bs-accordion-item value="4" title="LiveShots"}}
      <ul>
       {{#each model.live_shots key="id" as |live-shot|}}
-        <li>{{#link-to "live-shot" live-shot.id}} {{live-shot.title}} {{/link-to}}</li>
+        <li>{{#link-to "live-shots.live-shot" live-shot.id}} {{live-shot.title}} {{/link-to}}</li>
       {{/each}}
     </ul>
      {{/bs-accordion-item}}

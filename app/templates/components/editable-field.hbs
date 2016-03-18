@@ -3,11 +3,13 @@
   {{#if isTextArea }}
     {{textarea value=field}}
   {{else if isSelect }}
-    {{#x-select value=field }}
-      {{#each content as |item| }}
-        {{#x-option value=item.value}}{{item.label}}{{/x-option}}
+    <select id='{{field}}' onchange={{action "selectChanged" value="target.value"}}>
+      {{#each contentValues as |item| }}
+        <option value={{item.value}} selected={{eq fieldValue item.value}}>{{item.label}}</option>
       {{/each}}
-    {{/x-select}}
+    </select>
+  {{else if isPolySelect }}
+    {{polymorphic-select model=model typeContent=content field=field fieldname=fieldname}}
   {{else if isCheckbox }}
     {{input type=type checked=field}} {{field}}
   {{else}}

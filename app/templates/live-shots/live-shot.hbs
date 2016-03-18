@@ -1,8 +1,7 @@
 Title: {{editable-field model=model field=model.title}}<br/>
-TX: {{polymorphic-select model=model fieldname="transmitter" typeContent=transmitterTypes field=model.transmitter}}<br/>
-{{model.transmitter.transmitterTypeHuman}}: {{#editable-field model=model field=model.transmitter type="select" content=transmitters optionValuePath="content.id" optionLabelPath="content.name"}}{{model.transmitter.name}}{{/editable-field}}<br/>
-{{!-- {{model.transmitter.transmitterTypeHuman}}: {{#editable-field model=model field=model.transmitter type="select" content=transmitters optionValuePath="content.id" optionLabelPath="content.name"}}{{model.transmitter.name}}{{/editable-field}}<br/> --}}
-Receiver: {{#link-to "receiver" model.receiver.id}} {{model.receiver.name}} {{/link-to}}<br/>
+Transmitter: {{#editable-field type="poly-select" model=model field=model.transmitter fieldname="transmitter" content=transmitterTypes}}{{model.transmitter.name}}{{/editable-field}}<br/>
+{{!-- Transmitter: {{polymorphic-select model=model fieldname="transmitter" typeContent=transmitterTypes field=model.transmitter}}<br/> --}}
+Receiver:{{#editable-field type="select" model=model field=model.receiver relationship="receiver" content=receivers optionValuePath="content.id" optionLabelPath="content.name"}}{{#link-to "receiver" model.receiver.id}} {{model.receiver.name}} {{/link-to}}{{/editable-field}}
 Shows:<ul>
   {{#each model.shows key="id" as |show|}}
     <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
