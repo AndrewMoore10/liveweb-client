@@ -12,6 +12,7 @@ export default Ember.Component.extend({
     this.send('getCurrentValue');
     this.send('fillMergedContent');
   },
+  tagName: 'span',
   store: Ember.inject.service(),
   mergedContent: [], // array of type objects
   polyUpdater: Ember.observer('field.id', function(){

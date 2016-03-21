@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('login');
 
   this.route('live-shots', function() {
+    this.route('new', { path: '/new' });
     this.route('live-shot', { path: '/:id' });
   });
   this.route('vehicles', function() {

@@ -1,6 +1,6 @@
 <h2>Live Shots</h2>
-<div class="col-md-3">
-<ul>
+<div class="col-md-2">
+<ul class="list-unstyled">
   {{#each model key="id" as |live-shot|}}
     <li>{{#link-to "live-shots.live-shot" live-shot }} {{live-shot.title}} {{/link-to}}</li>
   {{/each}}
@@ -9,4 +9,6 @@
 <div class="col-md-9">
   {{!-- LiveShot --}}
   {{outlet}}
+</div>
+<div class="col-md-1">
 </div>

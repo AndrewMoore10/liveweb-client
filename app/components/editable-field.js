@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  tagName: 'span',
   session: Ember.inject.service(),
   store: Ember.inject.service(),
   currentUser: Ember.computed.alias('session.data.authenticated.user'),
+  userCanEdit: true,
   doubleClick: function() {
     console.log("double click");
     this.set('isEditing', true);

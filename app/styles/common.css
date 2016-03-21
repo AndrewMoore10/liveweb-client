@@ -55,3 +55,16 @@
 .idcard > div{
   background-color: white;
 }
+table > tbody > tr > th {
+  text-align: right;
+}
+table td, table th, table td * {
+    vertical-align: top;
+}
+th.th-20{
+  width: 20%;
+}
+td.td-80{
+  width: 80%;
+}
+

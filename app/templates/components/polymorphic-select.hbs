@@ -1,6 +1,5 @@
-<select id='{{fieldname}}-type' onchange={{action "selectPoly" value="target.value"}}>
+<select  class="form-control" id='{{fieldname}}-type' onchange={{action "selectPoly" value="target.value"}}>
   {{#each mergedContent as |item| }}
     <option value={{item.value}} selected={{eq currentMergedId item.value}}>{{item.label}}</option>
   {{/each}}
 </select>
-{{!-- <button {{action 'save'}}>Save</button> --}}

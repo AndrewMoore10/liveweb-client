@@ -1,42 +1,55 @@
-{{#if isEditing }}
-  {{#if isTextArea }}
-    {{textarea value=field}}
-  {{else if isSelect }}
-    <select id='{{field}}' onchange={{action "selectChanged" value="target.value"}}>
-      {{#each contentValues as |item| }}
-        <option value={{item.value}} selected={{eq fieldValue item.value}}>{{item.label}}</option>
-      {{/each}}
-    </select>
-  {{else if isPolySelect }}
-    {{polymorphic-select model=model typeContent=content field=field fieldname=fieldname}}
-  {{else if isPowerSelect }}
-    {{#power-select
-      search=(action 'searchAction')
-      selected=field
-      onchange=(action 'onchangeAction')
-      as |type|
-    }}
-      {{type.name}}
-    {{/power-select}}
-  {{else if isPowerSelectMultiple }}
-    {{#power-select-multiple
-      search=(action 'searchAction')
-      selected=field
-      onchange=(action 'onchangeAction')
-      as |type|
-    }}
-      {{type.name}}
-    {{/power-select-multiple}}
-  {{else if isCheckbox }}
-    {{input type=type checked=field}} {{field}}
+{{#if userCanEdit}}
+  {{#if isEditing }}
+    <div class="col-sm-8">
+    {{#if isTextArea }}
+      {{textarea class="form-control" value=field}}
+    {{else if isSelect }}
+      <select id='{{field}}' class="form-control" onchange={{action "selectChanged" value="target.value"}}>
+        {{#each contentValues as |item| }}
+          <option value={{item.value}} selected={{eq fieldValue item.value}}>{{item.label}}</option>
+        {{/each}}
+      </select>
+    {{else if isPolySelect }}
+      {{polymorphic-select model=model typeContent=content field=field fieldname=fieldname}}
+    {{else if isPowerSelect }}
+      {{#power-select
+        search=(action 'searchAction')
+        selected=field
+        onchange=(action 'onchangeAction')
+        as |type|
+      }}
+        {{type.name}}
+      {{/power-select}}
+    {{else if isPowerSelectMultiple }}
+      {{#power-select-multiple
+        search=(action 'searchAction')
+        selected=field
+        searchField=searchField
+        onchange=(action 'onchangeAction')
+        as |type|
+      }}
+        {{type.name}}
+      {{/power-select-multiple}}
+    {{else if isCheckbox }}
+      {{input class="form-control" type=type checked=field}}
+    {{else}}
+      {{input class="form-control" type=type value=field}}
+    {{/if}}
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-save" {{action "save"}}>Save</button>
+    </div>
+  {{else if hasAltLabel}}
+    {{alt-label}} ALT LABEL NEEDED????
+  {{else if hasBlock}}
+    {{yield}} <i class="pull-right fa fa-pencil-square-o"></i>
   {{else}}
-    {{input type=type value=field}}
+    {{field}} <i class="pull-right fa fa-pencil-square-o"></i>
   {{/if}}
-  <button {{action "save"}}>Save</button>
-{{else if hasAltLabel}}
-  {{alt-label}} ALT LABEL NEEDED????
-{{else if hasBlock}}
-  {{yield}} <i class="pull-right fa fa-pencil-square-o"></i>
 {{else}}
-  {{field}} <i class="pull-right fa fa-pencil-square-o"></i>
+  {{#if hasBlock}}
+    {{yield}}
+  {{else}}
+    {{field}}
+  {{/if}}
 {{/if}}
