@@ -24,6 +24,7 @@ export default Ember.Controller.extend({
     save(){
       Ember.Logger.log("Saving");
       var model = this.get('model');
+      var _this = this;
       model.save().then(function (record){
         _this.transitionToRoute('live-shots.live-shot', record.id);
       });

@@ -38,7 +38,8 @@
     </div>
     <div class="col-sm-4">
       {{#if (not newRecord)}}
-        <button class="btn btn-save" {{action "save"}}>Save</button>
+        <button class="btn btn-save btn-sm" {{action "save"}}>Save</button>
+        <button class="btn btn-cancel btn-sm" {{action "cancel"}}>Cancel</button>
       {{else}}
       <div>-</div>
       {{/if}}

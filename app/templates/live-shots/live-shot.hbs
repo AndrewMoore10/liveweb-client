@@ -20,6 +20,7 @@
 <div class='col-sm-6 '>
   <table class='table'>
     <tbody>
+    <tr><th>Status:</th><td></td></tr>
     <tr>
       <th class='th-20'>Transmitter:</th>
       <td class='td-80'>
@@ -40,6 +41,9 @@
         {{/editable-field}}
       </td>
     </tr>
+    <tr><th>Router:</th><td></td></tr>
+    <tr><th>Channel:</th><td></td></tr>
+    <tr><th>Issues:</th><td>{{editable-field type="textarea" model=model field=model.issues}}</td></tr>
     <tr><th>Location:</th><td>{{editable-field model=model field=model.location}}</td></tr>
     <tr><th>Instruction:</th><td>{{editable-field type="textarea" model=model field=model.instruction}}</td></tr>
     <tr><th>Shows:</th><td>

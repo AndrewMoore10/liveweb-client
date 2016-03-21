@@ -110,6 +110,11 @@ export default Ember.Component.extend({
       if(model.get("hasDirtyAttributes")){}
       else Ember.Logger.log("no dirty");
     },
+    cancel(){
+      this.set('isEditing', false);
+      var model = this.get('model');
+      model.rollbackAttributes(); 
+    },
     selectChanged(value){
       var model = this.get('model');
       var relationship = this.get('relationship');
