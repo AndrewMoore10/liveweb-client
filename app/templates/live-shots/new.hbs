@@ -1,7 +1,7 @@
 <form {{action 'save' on="submit"}}>
 
 <div class='col-sm-12 '>
-  <h1>Title: {{input class="form-control" value=title}}</h1>
+  <h1>Title: {{input class="form-control" value=model.title}}</h1>
   <hr/>
 </div>
 
@@ -11,7 +11,7 @@
   {{/editable-field}}
   <hr/>
   <h2>Photogs</h2>
-  {{#editable-field type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}} 
+  {{#editable-field isEditing=true type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}} 
     <ul class="list-unstyled">
       {{#each model.photogs key="id" as |photog|}}
         <li class="">{{#link-to "user" photog.id}}{{id-card user=photog}}{{/link-to}}</li>
@@ -25,7 +25,7 @@
     <tr>
       <th class='th-20'>Transmitter:</th>
       <td class='td-80'>
-        {{#editable-field type="poly-select" model=model field=model.transmitter fieldname="transmitter" content=transmitterTypes}}
+        {{#editable-field isEditing=true type="poly-select" model=model field=model.transmitter fieldname="transmitter" content=transmitterTypes}}
           {{#link-to (concat (pluralize model.transmitter.transmitterType) "." model.transmitter.transmitterType ) model.transmitter.id}}
             {{model.transmitter.name}}
           {{/link-to}}
@@ -35,17 +35,17 @@
     <tr>
       <th>Receiver:</th>
       <td>
-        {{#editable-field type="select" model=model field=model.receiver relationship="receiver" content=receivers optionValuePath="content.id" optionLabelPath="content.name"}}
+        {{#editable-field isEditing=true type="select" model=model field=model.receiver relationship="receiver" content=receivers optionValuePath="content.id" optionLabelPath="content.name"}}
           {{#link-to "receiver" model.receiver.id}}
             {{model.receiver.name}}
           {{/link-to}}
         {{/editable-field}}
       </td>
     </tr>
-    <tr><th>Location:</th><td>{{editable-field model=model field=model.location}}</td></tr>
-    <tr><th>Instruction:</th><td>{{editable-field type="textarea" model=model field=model.instruction}}</td></tr>
+    <tr><th>Location:</th><td>{{editable-field isEditing=true model=model field=model.location}}</td></tr>
+    <tr><th>Instruction:</th><td>{{editable-field isEditing=true type="textarea" model=model field=model.instruction}}</td></tr>
     <tr><th>Shows:</th><td>
-      {{#editable-field type='power-select-multiple' model=model field=model.shows fieldname='shows' className='show' searchField='name'}} 
+      {{#editable-field isEditing=true type='power-select-multiple' model=model field=model.shows fieldname='shows' className='show' searchField='name'}} 
         <ul class="list-unstyled">
           {{#each model.shows key="id" as |show|}}
             <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>

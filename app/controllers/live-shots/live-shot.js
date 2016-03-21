@@ -21,6 +21,13 @@ export default Ember.Controller.extend({
     ]
   }),
   actions:{
+    save(){
+      Ember.Logger.log("Saving");
+      var model = this.get('model');
+      model.save().then(function (record){
+        _this.transitionToRoute('live-shots.live-shot', record.id);
+      });
+    },
     searchReporters(term) {
       if (Ember.isBlank(term)) { return []; }
       var store = this.get('store');

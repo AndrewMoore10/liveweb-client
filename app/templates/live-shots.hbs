@@ -1,7 +1,7 @@
 <h2>Live Shots</h2>
 <div class="col-md-2">
 <ul class="list-unstyled">
-  {{#each model key="id" as |live-shot|}}
+  {{#each model as |live-shot|}}
     <li>{{#link-to "live-shots.live-shot" live-shot }} {{live-shot.title}} {{/link-to}}</li>
   {{/each}}
 </ul>

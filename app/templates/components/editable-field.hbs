@@ -37,7 +37,11 @@
     {{/if}}
     </div>
     <div class="col-sm-4">
-      <button class="btn btn-save" {{action "save"}}>Save</button>
+      {{#if (not newRecord)}}
+        <button class="btn btn-save" {{action "save"}}>Save</button>
+      {{else}}
+      <div>-</div>
+      {{/if}}
     </div>
   {{else if hasAltLabel}}
     {{alt-label}} ALT LABEL NEEDED????

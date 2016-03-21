@@ -59,6 +59,9 @@ export default Ember.Component.extend({
     return this.get('content');
   }.property('content'),
 
+  newRecord: Ember.computed( 'model', function(){
+    return this.get('model').get('isNew');
+  }),
 
   //For Select
   optionValuePath: "content.value",

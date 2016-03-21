@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  controllerName: 'live-shots.live-shot',
   model(params) {
     params.include = "transmitter"
     Ember.Logger.log(params)
