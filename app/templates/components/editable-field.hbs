@@ -1,6 +1,6 @@
 {{#if userCanEdit}}
   {{#if isEditing }}
-    <div class="col-sm-8">
+    <div class="editable-field col-sm-{{if newRecord '12' '9'}}">
     {{#if isTextArea }}
       {{textarea class="form-control" value=field}}
     {{else if isSelect }}
@@ -13,12 +13,17 @@
       {{polymorphic-select model=model typeContent=content field=field fieldname=fieldname}}
     {{else if isPowerSelect }}
       {{#power-select
+        tagName='span' 
         search=(action 'searchAction')
         selected=field
         onchange=(action 'onchangeAction')
         as |type|
       }}
-        {{type.name}}
+        {{#if (eq className "user")}}
+          {{id-card user=type}}
+        {{else}}  
+          {{type.name}}
+        {{/if}}
       {{/power-select}}
     {{else if isPowerSelectMultiple }}
       {{#power-select-multiple
@@ -28,7 +33,11 @@
         onchange=(action 'onchangeAction')
         as |type|
       }}
-        {{type.name}}
+        {{#if (eq className "user")}}
+          {{id-card user=type}}
+        {{else}}  
+          {{type.name}}
+        {{/if}}
       {{/power-select-multiple}}
     {{else if isCheckbox }}
       {{input class="form-control" type=type checked=field}}
@@ -36,20 +45,32 @@
       {{input class="form-control" type=type value=field}}
     {{/if}}
     </div>
-    <div class="col-sm-4">
       {{#if (not newRecord)}}
-        <button class="btn btn-save btn-sm" {{action "save"}}>Save</button>
-        <button class="btn btn-cancel btn-sm" {{action "cancel"}}>Cancel</button>
-      {{else}}
-      <div>-</div>
-      {{/if}}
+    <div class="col-sm-3">
+        <a href="#/" class='btn-action btn-save' {{action "save"}}>
+          <span class="fa-stack">
+            <i class="fa fa-floppy-o fa-stack-1x"></i>
+          </span>
+        </a>
+        <a href="#/" class='btn-action btn-cancel' {{action "cancel"}}>
+          <span class="fa-stack">
+            <i class="fa fa-ban fa-stack-1x"></i>
+          </span>
+        </a>
     </div>
-  {{else if hasAltLabel}}
-    {{alt-label}} ALT LABEL NEEDED????
-  {{else if hasBlock}}
-    {{yield}} <i class="pull-right fa fa-pencil-square-o"></i>
+    {{/if}}
   {{else}}
-    {{field}} <i class="pull-right fa fa-pencil-square-o"></i>
+  <div class="editable-field">
+    {{#if hasAltLabel}}
+      {{alt-label}} ALT LABEL NEEDED????
+    {{else if hasBlock}}
+      {{yield}}
+    {{else}}
+      {{field}} 
+    {{/if}}
+    <a href="#/" class='pull-right btn-action btn-edit' {{action "editClick"}}><span class="fa-stack"><i class="fa fa-pencil-square-o fa-stack-1x"></i></span></a>
+  </div>
+
   {{/if}}
 {{else}}
   {{#if hasBlock}}

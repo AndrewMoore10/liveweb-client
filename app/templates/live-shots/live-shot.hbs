@@ -3,24 +3,23 @@
   <hr/>
 </div>
 
-<div class='col-sm-6 '>
-  <h2>Reporter: </h2>{{#editable-field type='power-select' model=model field=model.reporter fieldname='reporter' className='user' searchField='name'}} 
-  {{#link-to "user" model.reporter.id}}{{id-card user=model.reporter}}{{/link-to}}
-  {{/editable-field}}
-  <hr/>
-  <h2>Photogs</h2>
-  {{#editable-field type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}} 
-    <ul class="list-unstyled">
-      {{#each model.photogs key="id" as |photog|}}
-        <li class="">{{#link-to "user" photog.id}}{{id-card user=photog}}{{/link-to}}</li>
-      {{/each}}
-    </ul>
-  {{/editable-field}}
+<div class='col-sm-5'>
+  <div class='col-sm-12'><h2>Reporter: </h2>{{#editable-field type='power-select' model=model field=model.reporter fieldname='reporter' className='user' searchField='name'}} 
+    {{#link-to "user" model.reporter.id}}{{id-card  tagName='span' user=model.reporter}}{{/link-to}}
+    {{/editable-field}}</div>
+  <div class='col-sm-12'><h2>Photogs</h2>
+    {{#editable-field type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}} 
+      <ul class="list-unstyled">
+        {{#each model.photogs key="id" as |photog|}}
+          <li class="">{{#link-to "user" photog.id}}{{id-card user=photog}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+    {{/editable-field}}</div>
 </div>
-<div class='col-sm-6 '>
+<div class='col-sm-7'>
   <table class='table'>
     <tbody>
-    <tr><th>Status:</th><td></td></tr>
+    <tr><th>Status:</th><td>{{#editable-field model=model field=model.status type="select" content=model.status_options}}{{model.status_name}}{{/editable-field}}</td></tr>
     <tr>
       <th class='th-20'>Transmitter:</th>
       <td class='td-80'>

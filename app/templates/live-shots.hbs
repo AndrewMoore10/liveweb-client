@@ -1,7 +1,15 @@
-<h2>Live Shots</h2>
+<h2>Live Shots
+<select onchange={{action "filterChanged" value="target.value"}}>
+  {{#each filterOptions as |option|}}
+    <option value={{option.value}}  selected={{eq selectedFilter option.value}}>{{option.label}}</option>
+  {{/each}}
+</select>
+</h2> 
+
 <div class="col-md-2">
+
 <ul class="list-unstyled">
-  {{#each model as |live-shot|}}
+  {{#each filteredLiveShots as |live-shot|}}
     <li>{{#link-to "live-shots.live-shot" live-shot }} {{live-shot.title}} {{/link-to}}</li>
   {{/each}}
     <li>{{#link-to "live-shots.new"}} +New Live Shot {{/link-to}}</li>

@@ -1,12 +1,14 @@
+{{#if user}}
 <div class="idcard">
-  <div class='col-sm-12 well'>
-    <div class='col-sm-4'>
-      <img src='{{assetHost}}{{user.picture}}'/>
+  <div class='well'>
+    <div class='picture'>
+      <span class="verthelper"></span><img class='circular-avatar-small' src='{{assetHost}}{{pictureURL}}'/>
     </div>
-    <div class='col-sm-8'>
+    <div class='details'>
       <p>{{user.name}}</p>
       <p>{{user.email}}</p>
       <p>{{user.username}}</p>
     </div>
   </div>
 </div>
+{{/if}}

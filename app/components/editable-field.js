@@ -7,10 +7,10 @@ export default Ember.Component.extend({
   currentUser: Ember.computed.alias('session.data.authenticated.user'),
   userCanEdit: true,
   doubleClick: function() {
-    console.log("double click");
-    this.set('isEditing', true);
-    Ember.run.scheduleOnce('afterRender', this, this.focusField);
-    return false;
+    // console.log("double click");
+    // this.set('isEditing', true);
+    // Ember.run.scheduleOnce('afterRender', this, this.focusField);
+    // return false;
   },
   focusField: function() {
     var val = this.$('input,textarea').val();
@@ -100,6 +100,12 @@ export default Ember.Component.extend({
     }
   }),
   actions:{
+    editClick(){
+      console.log("edit click");
+      this.set('isEditing', true);
+      Ember.run.scheduleOnce('afterRender', this, this.focusField);
+      return false;
+    },
     save(){
       this.set('isEditing', false);
       var store = this.get('store');
