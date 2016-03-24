@@ -129,7 +129,7 @@ a.btn-cancel{
 .editable-field a.btn-edit{
   position: absolute;
   right: 5px;
-  top: -15px;
+  top: -5px;
 }
 
 
@@ -180,5 +180,26 @@ a.btn-cancel{
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
+}
+
+select.plain-select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    border: none;
+    /* needed for Firefox: */
+    overflow:hidden;
+    /*width: 120%;*/
+    background-color: transparent;
+    text-align: right;
+    direction:rtl;
+}
+select.plain-select:after {
+    content: "dfds";
+    font-family: FontAwesome;
+}
+
+.ember-power-select-options{
+  max-height: 30em;
 }
 

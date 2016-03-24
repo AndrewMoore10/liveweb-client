@@ -46,7 +46,7 @@
     <tr><th>Location:</th><td>{{editable-field model=model field=model.location}}</td></tr>
     <tr><th>Instruction:</th><td>{{editable-field type="textarea" model=model field=model.instruction}}</td></tr>
     <tr><th>Shows:</th><td>
-      {{#editable-field type='power-select-multiple' model=model field=model.shows fieldname='shows' className='show' searchField='name'}} 
+      {{#editable-field type='power-select-multiple' model=model options=shows field=model.shows fieldname='shows' className='show' searchField='name'}} 
         <ul class="list-unstyled">
           {{#each model.shows key="id" as |show|}}
             <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>

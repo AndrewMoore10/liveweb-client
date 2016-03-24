@@ -1,9 +1,10 @@
-<h2>Live Shots
-<select onchange={{action "filterChanged" value="target.value"}}>
+<h2>
+<select class='plain-select' onchange={{action "filterChanged" value="target.value"}}>
   {{#each filterOptions as |option|}}
     <option value={{option.value}}  selected={{eq selectedFilter option.value}}>{{option.label}}</option>
   {{/each}}
 </select>
+Live Shots
 </h2> 
 
 <div class="col-md-2">

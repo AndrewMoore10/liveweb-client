@@ -9,24 +9,27 @@ export default Ember.Route.extend({
     Ember.Logger.log(record)
     return record;
   },
-  afterModel: function() {
-    return Ember.RSVP.hash({
-      vehicles: this.store.findAll('vehicle').then((function(_this) {
-        return function(vehicles) {
-          return _this.set('vehicles', vehicles);
-        };
-      })(this)),
-      mobileTransmitters: this.store.findAll('mobile-transmitter').then((function(_this) {
-        return function(mobileTransmitters) {
-          return _this.set('mobileTransmitters', mobileTransmitters);
-        };
-      })(this))
-    });
-  },
+  // afterModel: function() {
+  //   return Ember.RSVP.hash({
+  //     vehicles: this.store.findAll('vehicle').then((function(_this) {
+  //       return function(vehicles) {
+  //         return _this.set('vehicles', vehicles);
+  //       };
+  //     })(this)),
+  //     mobileTransmitters: this.store.findAll('mobile-transmitter').then((function(_this) {
+  //       return function(mobileTransmitters) {
+  //         return _this.set('mobileTransmitters', mobileTransmitters);
+  //       };
+  //     })(this))
+  //   });
+  // },
   setupController: function(controller, model) {
     this._super(controller, model);
-    controller.set('vehicles', this.get('vehicles'));
-    return controller.set('mobileTransmitters', this.get('mobileTransmitters'));
+    controller.set('shows', this.store.peekAll('show'));
+    controller.set('vehicles', this.store.peekAll('vehicle'));
+    // controller.set('vehicles', this.get('vehicles'));
+    return controller.set('mobileTransmitters', this.store.peekAll('mobile-transmitter'));
+    // return controller.set('mobileTransmitters', this.get('mobileTransmitters'));
   },
 
 
