@@ -1,4 +1,7 @@
 
+.avatar{
+  width: 100%;
+}
 
 .circular-avatar img, .circular-avatar-small img, .circular-avatar-tiny img {
   width: calc( 100% + 2px);
@@ -137,7 +140,7 @@ a.btn-cancel{
 select.plain-select{
     appearance: none;
     -webkit-appearance: none;
-    -moz-appearance: none; 
+    -moz-appearance: none;
     border: none;
     /* needed for Firefox: */
     overflow:hidden;
@@ -154,4 +157,3 @@ select.plain-select:after {
 .ember-power-select-options{
   max-height: 30em;
 }
-

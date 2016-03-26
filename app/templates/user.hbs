@@ -1,11 +1,10 @@
 
 
+<div class='col-md-2'><img class='avatar' src='{{assetHost}}{{pictureURL}}'/>{{model.name}}</div>
 <div id="content-mid" class="col-md-8">
 <div class="vehicle_img"><div class="image-frame"></div></div>
  {{#bs-accordion selected="1"}}
      {{#bs-accordion-item value="1" title="Details"}}
-      {{id-card user=model}}
-      <img class='circular-avatar' src='{{assetHost}}{{pictureURL}}'/>
       <dl class="dl-horizontal">
         <dt>Name:</dt> <dd>{{model.name}}</dd>
         <dt>Email:</dt> <dd>{{model.email}}</dd>
