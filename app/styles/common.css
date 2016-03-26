@@ -53,7 +53,7 @@
     vertical-align: middle;
 }
 .idcard{
-  float: left;
+  /*float: left;*/
   overflow: hidden;
   height: 100%;
   width: 250px;
@@ -69,6 +69,7 @@
   background-color: #ddd;
   background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
 }
+
 .ember-power-select-option[aria-current="true"] .well{ /*HACK if needed */
   color: #777;
 }
@@ -82,6 +83,7 @@
 .idcard > div > .details{
   font-size: 8pt;
   padding-top: 10px;
+  overflow: hidden;
 }
 .idcard > div > .details p{
   font-size: 8pt;
@@ -130,56 +132,6 @@ a.btn-cancel{
   position: absolute;
   right: 5px;
   top: -5px;
-}
-
-
-
-.circular-avatar img, .circular-avatar-small img, .circular-avatar-tiny img {
-  width: calc( 100% + 2px);
-  margin: auto;
-  vertical-align: middle;
-}
-.circular-avatar:before, .circular-avatar-small:before, .circular-avatar-tiny:before {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
-
-
-.circular-avatar, .circular-avatar-small, .circular-avatar-tiny {
-  display: inline-block;
-  vertical-align: middle;
-    white-space: nowrap;
-  overflow: hidden;
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-
-}
-
-.circular-avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-}
-
-.circular-avatar-small {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-}
-
-.circular-avatar-tiny {
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
 }
 
 select.plain-select{
