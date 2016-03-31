@@ -4,6 +4,7 @@
     {{#if isTextArea }}
       {{textarea class="form-control" value=field}}
     {{else if isSelect }}
+      {{!-- Field: {{field}} --}}
       <select id='{{field}}' class="form-control" onchange={{action "selectChanged" value="target.value"}}>
         {{#each contentValues as |item| }}
           <option value={{item.value}} selected={{eq fieldValue item.value}}>{{item.label}}</option>

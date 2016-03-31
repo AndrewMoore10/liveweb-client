@@ -40,8 +40,8 @@
         {{/editable-field}}
       </td>
     </tr>
-    <tr><th>Router:</th><td></td></tr>
-    <tr><th>Channel:</th><td></td></tr>
+    <tr><th>Router:</th><td>{{editable-field model=model field=model.router_dest type="select" content=model.dest_options}}</td></tr>
+    <tr><th>Channel:</th><td>{{#editable-field model=model field=model.ch type="select" content=model.channel_options}}{{model.ch}}{{/editable-field}}</td></tr>
     <tr><th>Issues:</th><td>{{editable-field type="textarea" model=model field=model.issues}}</td></tr>
     <tr><th>Location:</th><td>{{editable-field model=model field=model.location}}</td></tr>
     <tr><th>Instruction:</th><td>{{editable-field type="textarea" model=model field=model.instruction}}</td></tr>
