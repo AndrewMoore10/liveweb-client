@@ -157,3 +157,8 @@ select.plain-select:after {
 .ember-power-select-options{
   max-height: 30em;
 }
+
+.map-icon img{
+  width: 20px;
+  height: 20px;
+}

@@ -26,6 +26,7 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     this._super(controller, model);
     controller.set('shows', this.store.peekAll('show'));
+    controller.set('map_icons', this.store.peekAll('map_icon'));
     controller.set('vehicles', this.store.peekAll('vehicle'));
     // controller.set('vehicles', this.get('vehicles'));
     return controller.set('mobileTransmitters', this.store.peekAll('mobile-transmitter'));

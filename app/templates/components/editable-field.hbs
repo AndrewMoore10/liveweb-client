@@ -17,11 +17,14 @@
         tagName='span' 
         search=(action 'searchAction')
         selected=field
+        options=options
         onchange=(action 'onchangeAction')
         as |type|
       }}
         {{#if (eq className "user")}}
           {{id-card user=type}}
+        {{else if (eq className "map_icon")}}
+          {{map-icon-card map_icon=type}}
         {{else}}  
           {{type.name}}
         {{/if}}
@@ -37,6 +40,8 @@
       }}
         {{#if (eq className "user")}}
           {{id-card user=type}}
+        {{else if (eq className "map_icon")}}
+          {{map-icon-card map_icon=type}}
         {{else}}  
           {{type.name}}
         {{/if}}
@@ -72,7 +77,6 @@
     {{/if}}
     <a href="#/" class='pull-right btn-action btn-edit' {{action "editClick"}}><span class="fa-stack"><i class="fa fa-pencil-square-o fa-stack-1x"></i></span></a>
   </div>
-
   {{/if}}
 {{else}}
   {{#if hasBlock}}

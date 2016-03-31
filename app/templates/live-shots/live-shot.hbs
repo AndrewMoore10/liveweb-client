@@ -54,12 +54,16 @@
         </ul>
       {{/editable-field}}
     </td></tr>
+    <tr><th>Icon:</th><td>
+      {{#editable-field type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}} 
+        {{map-icon-card map_icon=model.map_icon}}
+      {{/editable-field}}
+    </td></tr>
     <tr><th></th><td></td></tr>
     </tbody>
   </table>
 </div>
-<div class='col-sm-6 '>Icon: {{editable-field model=model field=model.title}}</div>
-<div class='col-sm-6 '>
+<div class='col-sm-12 '>
   <p>Modified By: {{#link-to "user" model.modified_by.id}} {{model.modified_by.name}} {{/link-to}}</p>
   <p>Created By: {{#link-to "user" model.created_by.id}} {{model.created_by.name}} {{/link-to}}</p>
 </div>

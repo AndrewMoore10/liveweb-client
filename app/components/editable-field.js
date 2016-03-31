@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   currentUser: Ember.computed.alias('session.data.authenticated.user'),
   userCanEdit: true,
+  peekOnly: false,
   doubleClick: function() {
     // console.log("double click");
     // this.set('isEditing', true);
@@ -133,6 +134,14 @@ export default Ember.Component.extend({
       }
     },
     searchAction(term){
+      if(this.get("peekOnly")){
+        var store = this.get('store');
+        var fieldname = this.get('fieldname');
+        var searchField = this.get('searchField');
+        return store.peekAll(fieldname).filter(function(record){
+          return record.get(searchField).toLowerCase().indexOf(term.toLowerCase()) > -1;
+        });
+      }
       return new Ember.RSVP.Promise((resolve, reject) => {
         Ember.run.debounce(this, this._performSearch, term, resolve, reject, 600);
       });

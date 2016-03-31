@@ -25,6 +25,7 @@ export default DS.Model.extend({
   issues: DS.attr(),
   created_at: DS.attr(),
   updated_at: DS.attr(),
+  map_icon: DS.belongsTo("map_icon", { async: true}),
   modified_by: DS.belongsTo("user", {inverse: 'modified_live_shots', async: true}),
   created_by: DS.belongsTo("user", {inverse: 'created_live_shots', async: true})
 });
