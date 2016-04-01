@@ -7,6 +7,8 @@
     "bootstrap": "~3.3.5",
     "jquery-ui": "1.11.4",
     "ember-qunit-notifications": "0.1.0",
-    "font-awesome": "~4.5.0"
+    "font-awesome": "~4.5.0",
+    "uri.js": "^1.17.1",
+    "socket.io-client": "sio-client#^1.4.4"
   }
 }
