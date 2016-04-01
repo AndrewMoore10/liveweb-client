@@ -5,9 +5,6 @@ export default Ember.Controller.extend({
   init: function() {
     this._super();
   },
-  receivers: Ember.computed(function(){
-    return this.get("store").peekAll('receiver');
-  }),
   transmitterTypes: Ember.computed(function(){
     return [
       { index: 0,
@@ -28,28 +25,6 @@ export default Ember.Controller.extend({
       model.save().then(function (record){
         _this.transitionToRoute('live-shots.live-shot', record.id);
       });
-    },
-    searchReporters(term) {
-      if (Ember.isBlank(term)) { return []; }
-      var store = this.get('store');
-      return store.query('user', {filter: { name: term } } )
-    },
-    reporterSearchChanged(value){
-      var model = this.get('model');
-      model.set("reporter", value);
-      model.save();
-      Ember.Logger.log(`reporter changed; value: ${value}`)
-    },
-    searchPhotogs(term) {
-      if (Ember.isBlank(term)) { return []; }
-      var store = this.get('store');
-      return store.query('user', {filter: { name: term } } )
-    },
-    photogSearchChanged(value){
-      var model = this.get('model');
-      model.set("photogs", value);
-      model.save();
-      Ember.Logger.log(`reporter changed; value: ${value}`)
     }
   }
 });

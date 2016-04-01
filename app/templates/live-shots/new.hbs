@@ -45,7 +45,7 @@
     <tr><th>Location:</th><td>{{editable-field isEditing=true model=model field=model.location}}</td></tr>
     <tr><th>Instruction:</th><td>{{editable-field isEditing=true type="textarea" model=model field=model.instruction}}</td></tr>
     <tr><th>Shows:</th><td>
-      {{#editable-field isEditing=true type='power-select-multiple' model=model field=model.shows fieldname='shows' className='show' searchField='name'}} 
+      {{#editable-field isEditing=true type='power-select-multiple' model=model options=shows field=model.shows fieldname='shows' className='show' searchField='name'}} 
         <ul class="list-unstyled">
           {{#each model.shows key="id" as |show|}}
             <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
@@ -53,14 +53,18 @@
         </ul>
       {{/editable-field}}
     </td></tr>
+    <tr><th>Icon:</th><td>
+      {{#editable-field isEditing=true type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}} 
+        {{map-icon-card map_icon=model.map_icon}}
+      {{/editable-field}}
+    </td></tr>
     <tr><th></th><td></td></tr>
     </tbody>
   </table>
 </div>
-<div class='col-sm-6 '>Icon: {{editable-field model=model field=model.title}}</div>
-<div class='col-sm-6 '>
+<div class='col-sm-12 '>
   <p>Modified By: {{#link-to "user" model.modified_by.id}} {{model.modified_by.name}} {{/link-to}}</p>
   <p>Created By: {{#link-to "user" model.created_by.id}} {{model.created_by.name}} {{/link-to}}</p>
 </div>
-<button class="btn btn-save" type='submit'>Save</button>
+<button class="btn btn-save btn-primary" type='submit'>Save</button>
 </form>

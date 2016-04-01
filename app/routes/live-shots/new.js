@@ -7,12 +7,15 @@ export default LiveShot.extend({
   currentUser: Ember.computed.alias('session.data.authenticated.user'),
   model(){
     var currentUser = this.get('currentUser')
-    // model.set('modified_by', store.peekRecord('user', currentUser.id));
+    if(!currentUser) return this.transitionTo('login');
+    var user = this.store.peekRecord('user', currentUser.id);
+    var icon = this.store.peekAll('map-icon').filter(function(record){ return record.get('name') == "Default" })[0]
    return this.store.createRecord('live-shot',
     { 
       title: "",
-      modified_by: this.store.peekRecord('user', currentUser.id),
-      created_by: this.store.peekRecord('user', currentUser.id)
+      map_icon: icon,
+      modified_by: user,
+      created_by: user
     }); 
   }
 }); 

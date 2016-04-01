@@ -261,15 +261,16 @@ table .pic {
   -ms-background-position-x: center;
   -ms-background-position-y: 70%;
   background-position: center 70%;
-    // position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+/*  position: fixed;
+  left: 0;
+  bottom: 0;*/
+  width: 100%;
   clear: both;
   text-align: right;
   height: 60px;
   vertical-align: top;
   z-index: 99;
+  margin-top: 20px;
 }
 
 #footer p
