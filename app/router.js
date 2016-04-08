@@ -32,6 +32,8 @@ Router.map(function() {
   this.route('users', function() {
   });
   this.route('user', { path: '/user/:id' });
+  
+  this.route('livemap');
 });
 
 export default Router;

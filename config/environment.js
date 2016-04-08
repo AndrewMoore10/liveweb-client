@@ -50,6 +50,12 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+  
+  ENV['g-map'] = {
+    // libraries: ['places', 'geometry'],
+    // key: 'your-unique-google-map-api-key',
+    // protocol: 'https'
+  }
 
   return ENV;
 };

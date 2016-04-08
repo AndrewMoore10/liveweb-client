@@ -1,14 +1,31 @@
 @import url("common.css");
 @import url("leds.css");
 
-body
+@font-face {
+    font-family: 'engWeb';
+    src: url('../fonts/KGTV-ENGWEB.ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html, body
 {
-  // margin: 0 auto;
-  // width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
   background: #fff;
   font-family: "Hammersmith One", sans-serif;
 
+    /*overflow-y: scroll;*/
+}
+body > div.ember-view{
+  height: 100%;
+}
+
+body{
     overflow-y: scroll;
+
 }
 
 tr > th {
@@ -210,30 +227,58 @@ table .pic {
 }
 
 .navbar-inverse .navbar-brand {
-    display:block;
-    text-align:center;
-  height:100%;
-    line-height:39px;
+  display:block;
+  text-align:center;
+  vertical-align: middle;
+  line-height:39px;  
   font-family: "Lobster", cursive;
-  color: white;
+  /*color: black;*/
   font-size: 24pt;
   letter-spacing: 1px;
   padding: 11px 15px 9px;
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));
-    text-shadow: 0 15px 12px black;
+  padding: 0px;
+  /*-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));*/
+  /*text-shadow: 0 15px 12px black;*/
+  /*-webkit-text-stroke: -1px white;*/
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+
+.navbar-inverse .navbar-brand  .logo{
+  vertical-align: middle;
+  display: inline-block;
+  height: 100%; 
+  width: 60px;
+  background: url("http://10.40.10.45:3000/images/logo.svg");
+  background-repeat: no-repeat;
 }
 
 #header{
   background: transparent;
 }
 
-.navbar-inverse {
-  // background-color: #202d44;
-  min-height: 60px;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), color-stop(10%, rgba(0,0,0,.8)), color-stop(90%, rgba(0,0,0,.8)), to(rgba(0,0,0,0))), URL("/images/skyline.jpg") ;
-  -ms-background-position-x: center;
+.navbar-inverse, #footer {
+  border-bottom: none;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+  color: white !important;
+  /*background-color: #202d44;*/
+  background-color: #eee;
+  /*min-height: 60px;*/
+  /*background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), color-stop(10%, rgba(0,0,0,.8)), color-stop(90%, rgba(0,0,0,.8)), to(rgba(0,0,0,0))), URL("/images/skyline.jpg") ;*/
+  /*-ms-background-position-x: center;
   -ms-background-position-y: 40%;
-  background-position: center 40%;
+  background-position: center 40%;*/
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #444;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #666;
+  background-color: #fff;
 }
 
 #main
@@ -249,27 +294,15 @@ table .pic {
 {
   float: left;
   width: 100%;
+  min-height: calc(100% - 70px - 80px);
   background: #fff /*url(/wp-content/uploads/layout-three-liquid-background2.gif) repeat-y 80% 0*/;
 }
 
 
 #footer
 {
-  color: white;
-  background-color: #202d44;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), color-stop(10%, rgba(0,0,0,.1)), color-stop(90%, rgba(0,0,0,.8)), to(rgba(0,0,0,0))), URL("/images/skyline.jpg") ;
-  -ms-background-position-x: center;
-  -ms-background-position-y: 70%;
-  background-position: center 70%;
-/*  position: fixed;
-  left: 0;
-  bottom: 0;*/
-  width: 100%;
-  clear: both;
-  text-align: right;
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.5);
   height: 60px;
-  vertical-align: top;
-  z-index: 99;
   margin-top: 20px;
 }
 

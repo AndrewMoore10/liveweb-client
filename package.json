@@ -38,6 +38,7 @@
     "ember-data-live-filter-by": "1.0.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-g-map": "0.0.16",
     "ember-load-initializers": "^0.5.0",
     "ember-power-select": "git://github.com/moeabm/ember-power-select.git#fix-mouseover-optionItem-check",
     "ember-resolver": "^2.0.3",

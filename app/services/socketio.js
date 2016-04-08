@@ -5,7 +5,7 @@ export default Ember.Service.extend({
   init: function () {
     this._super();
     Ember.Logger.log("Initializing socket");
-    let socket = this.socket = io("http://localhost:3001");
+    let socket = this.socket = io("http://10.40.10.45:3001");
     let store = this.get('store');
     socket.on('updated', function(data) {
       // Ember.Logger.log('update ');
