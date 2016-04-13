@@ -102,12 +102,12 @@ export default Ember.Component.extend({
   }),
   actions:{
     editClick(){
-      console.log("edit click");
       this.set('isEditing', true);
       Ember.run.scheduleOnce('afterRender', this, this.focusField);
       return false;
     },
     save(){
+      console.log("save click");
       this.set('isEditing', false);
       var store = this.get('store');
       var model = this.get('model');
@@ -149,6 +149,7 @@ export default Ember.Component.extend({
     onchangeAction(value){
       var model = this.get('model');
       var fieldname = this.get('fieldname');
+      console.log(`${fieldname} ${value}`);
       model.set(fieldname, value);
       model.save();
       Ember.Logger.log(`${fieldname} changed; value: ${value}`)

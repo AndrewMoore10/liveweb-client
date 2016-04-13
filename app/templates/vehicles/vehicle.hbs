@@ -18,6 +18,12 @@
         <dt>Last Service at </dt><dd> </dd>
         <dt>Avg Mi/Day (30 days):</dt> <dd></dd>
         <dt>Avg Mi/Month (1 year):</dt> <dd></dd>
+        <dt>fun:</dt>{{fun}} <dd></dd>
+        <dt>Icon:</dt><dd>
+          {{#editable-field type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}} 
+            {{map-icon-card map_icon=model.map_icon}}
+          {{/editable-field}}
+        </dd>
       </dl>
      {{/bs-accordion-item}}
      {{#bs-accordion-item value="2" title="Logs"}}

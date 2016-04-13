@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  store: Ember.inject.service()
-
+  fun: Ember.computed(function(){
+    return "stuff";
+  })
 });

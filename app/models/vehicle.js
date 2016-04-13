@@ -26,6 +26,7 @@ export default Transmitter.extend({
   gps_lon: DS.attr(),
   has_mojio: DS.attr(),
   mojio_id: DS.attr(),
+  map_icon: DS.belongsTo("map_icon", { async: true}),
   created_at: DS.attr(),
   updated_at: DS.attr(),
   transmitterType: Ember.computed( function(){

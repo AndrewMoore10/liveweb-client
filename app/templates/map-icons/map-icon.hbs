@@ -1,0 +1,15 @@
+<div id="content-mid" class="col-md-8">
+<div><div class="image-frame"><img src="{{model.url}}" /></div></div>
+ {{#bs-accordion selected="1"}}
+     {{#bs-accordion-item value="1" title="Details"}}
+      <dl class="dl-horizontal">
+        <dt>Name:</dt> <dd>{{editable-field model=model field=model.name type=text}}</dd>
+        <dt>URL:</dt> <dd>{{editable-field model=model field=model.url}}</dd>
+        <dt>Scaled Width:</dt> <dd>{{editable-field model=model field=model.width}}</dd>
+        <dt>Scaled Height:</dt> <dd>{{editable-field model=model field=model.height}}</dd>
+        <dt>Anchor X:</dt> <dd>{{editable-field model=model field=model.anchor_x}}</dd>
+        <dt>Anchor Y:</dt> <dd>{{editable-field model=model field=model.anchor_y}}</dd>
+      </dl>
+     {{/bs-accordion-item}}
+ {{/bs-accordion}}
+</div>

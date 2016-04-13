@@ -32,6 +32,10 @@ Router.map(function() {
   this.route('users', function() {
   });
   this.route('user', { path: '/user/:id' });
+
+  this.route('map-icons', function() {
+    this.route('map-icon', { path: '/:id' });
+  });
   
   this.route('livemap');
 });
