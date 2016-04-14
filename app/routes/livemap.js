@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   model: function() {
     var store = this.store;
 
-    return this.store.peekAll('vehicle');
+    return this.store.peekAll('vehicle').filterBy('gps', true, {live: true});
   },
   afterModel: function(liveShots, transition) {
     var store = this.store;
