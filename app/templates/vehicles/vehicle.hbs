@@ -1,8 +1,22 @@
 
 
-<div id="content-mid" class="col-md-8">
-<div class="vehicle_img"><div class="image-frame"></div></div>
- {{#bs-accordion selected="1"}}
+
+<div id="content-mid" class="col-md-10">
+
+  <div class="col-sm-12"><h3>{{model.name}}</h3></div>
+  <div class="col-sm-12 vehicle_img"><div class="image-frame"></div></div>
+  {{#if model.gps}}
+  <div class="col-sm-12" >
+    <div class="map-preview" >
+      {{#g-map lat=model.gps_lat lng=model.gps_lon zoom=16 as |context|}}
+          {{g-map-marker context lat=model.gps_lat lng=model.gps_lon icon=model.map_icon.icon}}
+      {{/g-map}}
+
+      {{!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center={{model.gps_lat}},{{model.gps_lon}}&zoom=16&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xfdd02d%7C{{model.gps_lat}},{{model.gps_lon}}" alt="{{model.name}}"> --}}
+    </div>
+  </div>
+  {{/if}}
+ {{#bs-accordion selected="1" class="col-sm-12"}}
      {{#bs-accordion-item value="1" title="Details"}}
       <dl class="dl-horizontal">
         <dt>Name:</dt> <dd>{{editable-field model=model field=model.name}}</dd>
@@ -15,8 +29,6 @@
         <dt>Mast Height:</dt> <dd>{{editable-field model=model field=model.mast_height}}</dd>
         <dt>Engine service in</dt><dd>{{editable-field model=model field=model.engine_hrs_due}}</dd>
         <dt>Last Service at </dt><dd> </dd>
-        <dt>Avg Mi/Day (30 days):</dt> <dd></dd>
-        <dt>Avg Mi/Month (1 year):</dt> <dd></dd>
         <dt>fun:</dt>{{fun}} <dd></dd>
         <dt>Icon:</dt><dd>
           {{#editable-field type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}} 
@@ -38,6 +50,7 @@
         <dt>Longitude:</dt> <dd>{{editable-field model=model field=model.gps_lon}}</dd>
         <dt>Updated:</dt> <dd>{{model.gps_updated_at}}</dd>
       </dl>
+
      {{/bs-accordion-item}}
      {{#bs-accordion-item value="3" title="Charts"}}
        <p>Lorem ipsum...</p>
@@ -50,4 +63,7 @@
     </ul>
      {{/bs-accordion-item}}
  {{/bs-accordion}}
+
+</div>
+<div class="col-md-4">
 </div>

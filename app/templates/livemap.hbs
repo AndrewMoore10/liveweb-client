@@ -1,12 +1,13 @@
-{{#g-map lat=32.715786 lng=-117.158340 zoom=12 as |context|}}
-  {{#each model as |vehicle|}}
-    {{g-map-marker context lat=vehicle.gps_lat lng=vehicle.gps_lon icon=vehicle.map_icon.icon}}
-  {{/each}}
-  {{#each activeLiveShots as |shot|}}
-    {{g-map-marker context lat=shot.lat lng=shot.lon icon=shot.map_icon.icon}}
-  {{/each}}
-{{/g-map}}
-
+<div class="fullmap">
+  {{#g-map lat=32.715786 lng=-117.158340 zoom=12 as |context|}}
+    {{#each model as |vehicle|}}
+      {{g-map-marker context lat=vehicle.gps_lat lng=vehicle.gps_lon icon=vehicle.map_icon.icon}}
+    {{/each}}
+    {{#each activeLiveShots as |shot|}}
+      {{g-map-marker context lat=shot.lat lng=shot.lon icon=shot.map_icon.icon}}
+    {{/each}}
+  {{/g-map}}
+</div>
 {{!-- 
   {{#each model as |vehicle|}}
     MI - {{vehicle.map_icon.icon}} <br/>

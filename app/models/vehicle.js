@@ -28,6 +28,7 @@ export default Transmitter.extend({
   gps_type_name: DS.attr(),
   gps_type_options: DS.attr(),
   mojio_id: DS.attr(),
+  address: DS.attr(),
   map_icon: DS.belongsTo("map_icon", { async: true}),
   created_at: DS.attr(),
   updated_at: DS.attr(),
