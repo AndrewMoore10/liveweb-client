@@ -1,10 +1,27 @@
 <div class="fullmap">
   {{#g-map lat=32.715786 lng=-117.158340 zoom=12 as |context|}}
     {{#each model as |vehicle|}}
-      {{g-map-marker context lat=vehicle.gps_lat lng=vehicle.gps_lon icon=vehicle.map_icon.icon}}
+      {{#g-map-marker context group="vehicles" lat=vehicle.gps_lat lng=vehicle.gps_lon icon=vehicle.map_icon.icon as |markerContext| }}
+        {{#g-map-infowindow markerContext}}
+          <h2> {{vehicle.name}} </h2>
+          <p>Updated: {{vehicle.gps_updated_at}}</p>
+        {{/g-map-infowindow}}
+      {{/g-map-marker}}
     {{/each}}
     {{#each activeLiveShots as |shot|}}
-      {{g-map-marker context lat=shot.lat lng=shot.lon icon=shot.map_icon.icon}}
+      {{#g-map-marker context group="shot" lat=shot.lat lng=shot.lon icon=shot.map_icon.icon as |markerContext| }}
+        {{#g-map-infowindow markerContext}}
+          <h2> {{shot.title}} </h2>
+        {{/g-map-infowindow}}
+      {{/g-map-marker}}
+    {{/each}}
+
+    {{#each receiveSites as |site|}}
+      {{#g-map-marker context group="site" lat=site.lat lng=site.lon icon=site.map_icon.icon as |markerContext| }}
+        {{#g-map-infowindow markerContext}}
+          <h2> {{site.title}} </h2>
+        {{/g-map-infowindow}}
+      {{/g-map-marker}}
     {{/each}}
   {{/g-map}}
 </div>
