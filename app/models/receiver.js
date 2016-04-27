@@ -3,6 +3,9 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   name: DS.attr(),
   location: DS.attr(),
+  lat: DS.attr(),
+  lon: DS.attr(),
+  map_icon: DS.belongsTo("map_icon", { async: true}),
   status: DS.attr(),
   status_name: DS.attr("string", {readOnly: true}),
   status_options: DS.attr(),

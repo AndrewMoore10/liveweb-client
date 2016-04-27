@@ -1,15 +1,33 @@
 
 
-<div id="content-mid" class="col-md-8">
-<div class="vehicle_img"><div class="image-frame"></div></div>
- {{#bs-accordion selected="1"}}
+<div id="content-mid" class="col-md-10">
+
+  <div class="col-sm-12"><h3>{{model.name}}</h3></div>
+  <div class="col-sm-12 vehicle_img"><div class="image-frame"></div></div>
+  <div class="col-sm-12" >
+    <div class="map-preview" >
+     {{!--  {{#g-map lat=model.lat lng=model.lon zoom=16 as |context|}}
+          {{g-map-marker context lat=model.lat lng=model.lon icon=model.map_icon.icon}}
+      {{/g-map}} --}}
+
+      <img src="http://maps.googleapis.com/maps/api/staticmap?center={{model.lat}},{{model.lon}}&zoom=16&scale=false&size=600x300&maptype=hybrid&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xfdd02d%7C{{model.lat}},{{model.lon}}" alt="{{model.name}}">
+    </div>
+  </div>
+ {{#bs-accordion selected="1" class="col-sm-12"}}
      {{#bs-accordion-item value="1" title="Details"}}
       <dl class="dl-horizontal">
         <dt>Name:</dt> <dd>{{editable-field model=model field=model.name type=text}}</dd>
         <dt>Location:</dt> <dd>{{editable-field model=model field=model.location}}</dd>
+        <dt>Latitude:</dt> <dd>{{editable-field model=model field=model.lat}}</dd>
+        <dt>Longitude:</dt> <dd>{{editable-field model=model field=model.lon}}</dd>
         <dt>Status:</dt> <dd>{{#editable-field model=model field=model.status type="select" content=model.status_options}}{{model.status_name}}{{/editable-field}}</dd>
         <dt>Status Note:</dt> <dd>{{editable-field model=model field=model.status_note type="textarea"}}</dd>
         <dt>Receiver Type:</dt> <dd>{{#editable-field type="select" model=model field=model.receiver_type content=model.type_options}}{{model.type_name}}{{/editable-field}}</dd>
+        <dt>Icon:</dt><dd>
+          {{#editable-field type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}} 
+            {{map-icon-card map_icon=model.map_icon}}
+          {{/editable-field}}
+        </dd>
       </dl>
      {{/bs-accordion-item}}
      {{#bs-accordion-item value="4" title="LiveShots"}}
