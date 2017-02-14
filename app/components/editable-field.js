@@ -7,6 +7,7 @@ export default Ember.Component.extend({
   currentUser: Ember.computed.alias('session.data.authenticated.user'),
   userCanEdit: true,
   peekOnly: false,
+  autosave: true,
   doubleClick: function() {
     // console.log("double click");
     // this.set('isEditing', true);
@@ -120,7 +121,7 @@ export default Ember.Component.extend({
     cancel(){
       this.set('isEditing', false);
       var model = this.get('model');
-      model.rollbackAttributes(); 
+      model.rollbackAttributes();
     },
     selectChanged(value){
       var model = this.get('model');
@@ -151,7 +152,9 @@ export default Ember.Component.extend({
       var fieldname = this.get('fieldname');
       console.log(`${fieldname} ${value}`);
       model.set(fieldname, value);
-      model.save();
+      if(this.get('autosave')){
+        model.save();
+      }
       Ember.Logger.log(`${fieldname} changed; value: ${value}`)
 
     }
@@ -164,7 +167,7 @@ export default Ember.Component.extend({
     var filter = {};
     var _className = this.get('className');
     filter[searchField] = term
-    
+
     return resolve(this.get('field').then(function (field){
       var className = _className || field.constructor.modelName;
       return store.query(className, {filter} )

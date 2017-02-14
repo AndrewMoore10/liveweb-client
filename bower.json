@@ -9,6 +9,7 @@
     "ember-qunit-notifications": "0.1.0",
     "font-awesome": "~4.5.0",
     "uri.js": "^1.17.1",
-    "socket.io-client": "sio-client#^1.4.4"
+    "socket.io-client": "sio-client#^1.4.4",
+    "ember-cli-moment-shim": "0.0.3"
   }
 }

@@ -6,12 +6,12 @@
 </div>
 
 <div class='col-sm-6 '>
-  <h2>Reporter: </h2>{{#editable-field isEditing=true type='power-select' model=model field=model.reporter fieldname='reporter' className='user' searchField='name'}} 
+  <h2>Reporter: </h2>{{#editable-field autosave=false isEditing=true type='power-select' model=model field=model.reporter fieldname='reporter' className='user' searchField='name'}}
   {{#link-to "user" model.reporter.id}}{{id-card user=model.reporter}}{{/link-to}}
   {{/editable-field}}
   <hr/>
   <h2>Photogs</h2>
-  {{#editable-field isEditing=true type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}} 
+  {{#editable-field autosave=false isEditing=true type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}}
     <ul class="list-unstyled">
       {{#each model.photogs key="id" as |photog|}}
         <li class="">{{#link-to "user" photog.id}}{{id-card user=photog}}{{/link-to}}</li>
@@ -25,7 +25,7 @@
     <tr>
       <th class='th-20'>Transmitter:</th>
       <td class='td-80'>
-        {{#editable-field isEditing=true type="poly-select" model=model field=model.transmitter fieldname="transmitter" content=transmitterTypes}}
+        {{#editable-field autosave=false isEditing=true type="poly-select" model=model field=model.transmitter fieldname="transmitter" content=transmitterTypes}}
           {{#link-to (concat (pluralize model.transmitter.transmitterType) "." model.transmitter.transmitterType ) model.transmitter.id}}
             {{model.transmitter.name}}
           {{/link-to}}
@@ -35,7 +35,7 @@
     <tr>
       <th>Receiver:</th>
       <td>
-        {{#editable-field isEditing=true type="select" model=model field=model.receiver relationship="receiver" content=receivers optionValuePath="content.id" optionLabelPath="content.name"}}
+        {{#editable-field autosave=false isEditing=true type="select" model=model field=model.receiver relationship="receiver" content=receivers optionValuePath="content.id" optionLabelPath="content.name"}}
           {{#link-to "receiver" model.receiver.id}}
             {{model.receiver.name}}
           {{/link-to}}
@@ -45,7 +45,7 @@
     <tr><th>Location:</th><td>{{editable-field isEditing=true model=model field=model.location}}</td></tr>
     <tr><th>Instruction:</th><td>{{editable-field isEditing=true type="textarea" model=model field=model.instruction}}</td></tr>
     <tr><th>Shows:</th><td>
-      {{#editable-field isEditing=true type='power-select-multiple' model=model options=shows field=model.shows fieldname='shows' className='show' searchField='name'}} 
+      {{#editable-field autosave=false isEditing=true type='power-select-multiple' model=model options=shows field=model.shows fieldname='shows' className='show' searchField='name'}}
         <ul class="list-unstyled">
           {{#each model.shows key="id" as |show|}}
             <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
@@ -54,7 +54,7 @@
       {{/editable-field}}
     </td></tr>
     <tr><th>Icon:</th><td>
-      {{#editable-field isEditing=true type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}} 
+      {{#editable-field autosave=false isEditing=true type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}}
         {{map-icon-card map_icon=model.map_icon}}
       {{/editable-field}}
     </td></tr>

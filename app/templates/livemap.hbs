@@ -5,25 +5,24 @@
       {{#g-map-marker context group="vehicles" lat=vehicle.gps_lat lng=vehicle.gps_lon icon=vehicle.map_icon.icon as |markerContext| }}
         {{#g-map-infowindow markerContext}}
           <h2> {{vehicle.name}} </h2>
-          <p>Updated: {{vehicle.gps_updated_at}}</p>
+          <p>Updated: {{moment-format vehicle.gps_updated_at "MM-DD-YYYY @ h:mm:ss A"}}</p>
         {{/g-map-infowindow}}
       {{/g-map-marker}}
     {{/each}}
-{{!-- 
+
     {{#each activeLiveShots as |shot|}}
       {{#g-map-marker context group="shot" lat=shot.lat lng=shot.lon icon=shot.map_icon.icon as |markerContext| }}
         {{#g-map-infowindow markerContext}}
           <h2> {{shot.title}} </h2>
         {{/g-map-infowindow}}
       {{/g-map-marker}}
-    {{/each}} --}}
+    {{/each}}
 
     {{#each establishedLiveShots as |shot|}}
-      {{#g-map-marker context group="shot" lat=shot.lat lng=shot.lon icon=shot.map_icon.icon as |markerContext| }}
-        {{#g-map-infowindow markerContext}}
-          <h2> {{shot.title}} </h2>
-        {{/g-map-infowindow}}
-      {{/g-map-marker}}
+      {{#g-map-polyline context strokeColor="green" strokeWeight="6" strokeOpacity="0.3" as |coordinateContext|}}
+        {{g-map-polyline-coordinate coordinateContext lat=shot.receiver.lat lng=shot.receiver.lon}}
+        {{g-map-polyline-coordinate coordinateContext lat=shot.transmitter.gps_lat lng=shot.transmitter.gps_lon}}
+      {{/g-map-polyline}}
     {{/each}}
 
     {{#each receiveSites as |site|}}
@@ -35,7 +34,8 @@
     {{/each}}
   {{/g-map}}
 </div>
-{{!-- 
-  {{#each model as |vehicle|}}
-    MI - {{vehicle.map_icon.icon}} <br/>
+{{!--
+  {{#each establishedLiveShots as |shot|}}
+    rx - {{shot.receiver.lat}} , {{shot.receiver.lon}}<br/>
+    tx - {{shot.transmitter.gps_lat}} , {{shot.transmitter.gps_lon}}<br/>
   {{/each}} --}}

@@ -5,6 +5,17 @@ export default Ember.Controller.extend({
   init: function() {
     this._super();
   },
+  actions:{
+    save(){
+
+      Ember.Logger.log("Saving Live Shot");
+      var model = this.get('model');
+      var _this = this;
+      model.save().then(function (record){
+        _this.transitionToRoute('live-shots.live-shot', record.id);
+      });
+    }
+  },
   transmitterTypes: Ember.computed(function(){
     return [
       { index: 0,
@@ -16,15 +27,5 @@ export default Ember.Controller.extend({
         store: this.get('mobileTransmitters')
       }
     ]
-  }),
-  actions:{
-    save(){
-      Ember.Logger.log("Saving");
-      var model = this.get('model');
-      var _this = this;
-      model.save().then(function (record){
-        _this.transitionToRoute('live-shots.live-shot', record.id);
-      });
-    }
-  }
+  })
 });

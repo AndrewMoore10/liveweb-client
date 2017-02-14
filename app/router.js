@@ -13,7 +13,8 @@ Router.map(function() {
     this.route('live-shot', { path: '/:id' });
   });
   this.route('vehicles', function() {
-    this.route('vehicle', { path: '/:id' });
+    this.route('new', { path: '/new' });
+    this.route('vehicle', { path: '/:id' })
   });
   this.route('mobile-transmitters', function() {
     this.route('mobile-transmitter', { path: '/:id' });
@@ -36,7 +37,7 @@ Router.map(function() {
   this.route('map-icons', function() {
     this.route('map-icon', { path: '/:id' });
   });
-  
+
   this.route('livemap');
 });
 

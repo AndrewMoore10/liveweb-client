@@ -2,6 +2,7 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
+  controllerName: 'vehicles.vehicle',
   model(params) {
     Ember.Logger.log('Route get 1 vehicle...');
     Ember.Logger.log(params);

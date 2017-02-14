@@ -218,3 +218,7 @@ select.plain-select:after {
   right: 10px;
   left: auto;
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}

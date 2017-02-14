@@ -1,7 +1,7 @@
 {{!-- <div class='collapse navbar-collapse' id='main-nav-collapse'>
   <ul class='nav navbar-nav'>
     {{#link-to 'index' tagName='li' activeClass='active'}}
-      
+
     {{/link-to}}
   </ul>
 </div> --}}
@@ -10,8 +10,8 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
-      </button> 
-      
+      </button>
+
       {{#link-to 'index' class="navbar-brand"}}<span class="logo"></span>pENGuin{{/link-to}}
       {{!-- <a class="navbar-brand" href="/"></a> --}}
     </div>
@@ -44,13 +44,12 @@
 
         <li class="dropdown">
           <a>Dashboards</a>
-
           <ul class="dropdown-menu" role="menu">
-            <li><a href="/pages/quickview">Quickview</a></li>
+            <li><a>Quickview</a></li>
 
-            <li><a href="/pages/map_view">Map</a></li>
+            <li>{{#link-to 'livemap'}}Maps{{/link-to}}</li>
 
-            <li><a href="/pages/liveshots">LiveShots</a></li>
+            <li><a>LiveShots</a></li>
           </ul>
         </li>
       </ul>
