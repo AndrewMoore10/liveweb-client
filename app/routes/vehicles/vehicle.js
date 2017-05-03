@@ -7,7 +7,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     Ember.Logger.log('Route get 1 vehicle...');
     Ember.Logger.log(params);
 
-    return this.store.findRecord('vehicle', params.id);
+    var record = this.store.queryRecord('vehicle', { id: params.id, include: "logs" });
+    // return this.store.findRecord('vehicle', params.id);
+    return record;
   },
 
   //===================
@@ -21,6 +23,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   //   }, 1000)
   // },
 
+  setupController: function(controller, model) {
+    this._super(controller, model);
+    controller.set('logs', this.store.peekAll('log'));
+    return;
+    // return controller.set('mobileTransmitters', this.get('mobileTransmitters'));
+  },
   actions: {
     // reloadModel: function() {
     //   Ember.Logger.log('Route  refresh...');

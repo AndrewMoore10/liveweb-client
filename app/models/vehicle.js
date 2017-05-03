@@ -5,6 +5,7 @@ import Transmitter from './transmitter';
 export default Transmitter.extend({
   name: DS.attr(),
   status: DS.attr(),
+  status_name: DS.attr(),
   description: DS.attr(),
   active: DS.attr(),
   vehicle_type: DS.attr(),
@@ -32,6 +33,7 @@ export default Transmitter.extend({
   map_icon: DS.belongsTo("map_icon", { async: true}),
   created_at: DS.attr(),
   updated_at: DS.attr(),
+  logs: DS.hasMany("log", {async: true}),
   transmitterType: Ember.computed( function(){
     return "vehicle";
   }),

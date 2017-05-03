@@ -21,6 +21,7 @@ Router.map(function() {
   });
 
   this.route('receivers', function() {
+    this.route('new', { path: '/new' });
     this.route('receiver', { path: '/:id' });
   });
   this.route('receiver', { path: '/receiver/:id' });

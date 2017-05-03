@@ -3,7 +3,6 @@
   height: 30px;
   width: 25%;
   margin: 10px 0;
-  float: left;
 }
 
 .led-box p {
@@ -12,11 +11,13 @@
   margin: 1em;
 }
 .led-green, .led-yellow, .led-red, .led-blue{
+  display: inline-block;
+  min-width: 12px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
 
-} 
+}
 
 .led-green {
   background-color: #ABFF00;

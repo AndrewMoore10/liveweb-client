@@ -4,11 +4,12 @@
 </div>
 
 <div class='col-sm-5'>
-  <div class='col-sm-12'><h2>Reporter: </h2>{{#editable-field type='power-select' model=model field=model.reporter fieldname='reporter' className='user' searchField='name'}} 
+  <div class='col-sm-12'><h2>Reporter: </h2>
+    {{#editable-field type='power-select' model=model field=model.reporter fieldname='reporter' className='user' searchField='name'}}
     {{#link-to "user" model.reporter.id}}{{id-card  tagName='span' user=model.reporter}}{{/link-to}}
     {{/editable-field}}</div>
   <div class='col-sm-12'><h2>Photogs</h2>
-    {{#editable-field type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}} 
+    {{#editable-field type='power-select-multiple' model=model field=model.photogs fieldname='photogs' className='user' searchField='name'}}
       <ul class="list-unstyled">
         {{#each model.photogs key="id" as |photog|}}
           <li class="">{{#link-to "user" photog.id}}{{id-card user=photog}}{{/link-to}}</li>
@@ -46,7 +47,7 @@
     <tr><th>Location:</th><td>{{editable-field model=model field=model.location}}</td></tr>
     <tr><th>Instruction:</th><td>{{editable-field type="textarea" model=model field=model.instruction}}</td></tr>
     <tr><th>Shows:</th><td>
-      {{#editable-field type='power-select-multiple' model=model options=shows field=model.shows fieldname='shows' className='show' searchField='name'}} 
+      {{#editable-field type='power-select-multiple' model=model options=shows field=model.shows fieldname='shows' className='show' searchField='name'}}
         <ul class="list-unstyled">
           {{#each model.shows key="id" as |show|}}
             <li>{{#link-to "show" show.id}} {{show.name}} {{/link-to}}</li>
@@ -55,7 +56,7 @@
       {{/editable-field}}
     </td></tr>
     <tr><th>Icon:</th><td>
-      {{#editable-field type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}} 
+      {{#editable-field type='power-select' model=model options=map_icons peekOnly=true field=model.map_icon fieldname='map_icon' className='map_icon' searchField='url'}}
         {{map-icon-card map_icon=model.map_icon}}
       {{/editable-field}}
     </td></tr>
@@ -64,6 +65,11 @@
   </table>
 </div>
 <div class='col-sm-12 '>
-  <p>Modified By: {{#link-to "user" model.modified_by.id}} {{model.modified_by.name}} {{/link-to}}</p>
-  <p>Created By: {{#link-to "user" model.created_by.id}} {{model.created_by.name}} {{/link-to}}</p>
+  <div class='col-sm-8 '>
+    <p>Modified By: {{#link-to "user" model.modified_by.id}} {{model.modified_by.name}} {{/link-to}}</p>
+    <p>Created By: {{#link-to "user" model.created_by.id}} {{model.created_by.name}} {{/link-to}}</p>
+  </div>
+  <div class='col-sm-4'>
+    <button class="col-sm-8 btn btn-danger" type='submit'>Delete Assignment</button>
+  </div>
 </div>

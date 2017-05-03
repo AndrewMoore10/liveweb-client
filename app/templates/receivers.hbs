@@ -4,6 +4,7 @@
   {{#each model key="id" as |receiver|}}
     <li>{{#link-to "receivers.receiver" receiver.id}} {{receiver.name}} {{/link-to}}</li>
   {{/each}}
+  <li>{{#link-to "receivers.new"}} +New Receiver {{/link-to}}</li>
 </ul>
 </div>
 <div class="col-md-9">

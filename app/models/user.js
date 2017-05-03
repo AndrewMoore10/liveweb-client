@@ -11,6 +11,7 @@ export default DS.Model.extend({
   reporter_live_shots: DS.hasMany("live-shot"),
   modified_live_shots: DS.hasMany("live-shot"),
   created_live_shots: DS.hasMany("live-shot"),
+  created_logs: DS.hasMany("log"),
   vehicles: DS.hasMany("live-shot"),
-  
+
 });
